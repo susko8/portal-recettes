@@ -1,7 +1,9 @@
 package com.recettes.portalrecettes;
 
 import com.recettes.portalrecettes.models.User;
+import com.recettes.portalrecettes.models.ingredients;
 import com.recettes.portalrecettes.persistence.UserDao;
+import com.recettes.portalrecettes.persistence.ingredientsDao;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -16,6 +18,8 @@ public class PortalRecettesApplication
 
     @Autowired
     private UserDao userDao;
+    @Autowired
+    private ingredientsDao ingredientDao;
 
     public static void main(String[] args)
     {
@@ -26,5 +30,6 @@ public class PortalRecettesApplication
     public void init()
     {
         userDao.save(new User("samuel","12345","samuel","susoliak"));
+        ingredientDao.save(new ingredients("chocolat","liendemonimage"));
     }
 }
