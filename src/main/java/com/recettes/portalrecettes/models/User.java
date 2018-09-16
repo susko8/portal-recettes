@@ -1,6 +1,7 @@
 package com.recettes.portalrecettes.models;
 
 import javax.persistence.*;
+import java.util.List;
 
 @Entity(name="utilisateur")
 public class User {
@@ -16,6 +17,16 @@ public class User {
     @Column(name="nom")
     private String surname;
 
+    @OneToMany(cascade=CascadeType.ALL)
+    List<Ingredient> Ingredient;
+
+    public List<Ingredient> getIngredient() {
+        return Ingredient;
+    }
+
+    public void setIngredient(List<Ingredient> ingredient) {
+        this.Ingredient = ingredient;
+    }
 
     public String getName() {
         return name;
