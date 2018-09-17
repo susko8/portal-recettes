@@ -9,6 +9,7 @@ import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 
 import javax.annotation.PostConstruct;
 import java.util.ArrayList;
+import java.util.Comparator;
 import java.util.List;
 
 @SpringBootApplication
@@ -88,6 +89,9 @@ public class PortalRecettesApplication
         recetteDao.save(r);
         us2.setIngredient(listIng);
         userDao.save(us2);
+
+        listIng.sort(Comparator.comparing(Ingredient::getNom));
+        System.out.println(listIng.toString());
 
 
 

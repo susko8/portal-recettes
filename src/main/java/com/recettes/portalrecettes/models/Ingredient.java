@@ -1,5 +1,6 @@
 package com.recettes.portalrecettes.models;
 import javax.persistence.*;
+import java.util.Objects;
 
 @Entity(name="ingredients")
 public class Ingredient {
@@ -41,12 +42,4 @@ public class Ingredient {
         this.lien_img = lien_img;
     }
 
-    @Override
-    public String toString() {
-        return "Ingredient{" +
-                "id=" + id +
-                ", nom='" + nom + '\'' +
-                ", lien_img='" + lien_img + '\'' +
-                '}';
-    }
 }
