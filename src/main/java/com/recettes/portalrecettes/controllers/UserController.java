@@ -29,7 +29,13 @@ public class UserController {
     @GetMapping("/home")
     public String showHome()
     {
-        return "connection";
+        return "index";
+    }
+
+    @GetMapping("/account")
+    public String showAccount()
+    {
+        return "account";
     }
 
     @PostMapping("/login")
