@@ -61,6 +61,38 @@ public class PortalRecettesApplication
 //        r1.setIngredient(listIng2);
 //        recetteDao.save(r1);
 
+
+        User us1 =new User("quentin","miam","quentin","unal");
+        User us2 =new User("laurine","1234","laurine","torossian");
+        userDao.save(new User("sophie","tasty","sophie","aitis"));
+
+        Recettes r =new Recettes("omellette au fromage","blabla","lien");
+        List<Ingredient> listIng = new ArrayList<>();
+        listIng.add(new Ingredient("oeuf","liendemonimage"));
+        listIng.add(new Ingredient("fromage rapé","liendemonimage"));
+        ingredientDao.saveAll(listIng);
+        r.setIngredient(listIng);
+        us1.setIngredient(listIng);
+        recetteDao.save(r);
+        userDao.save(us1);
+        listIng.clear();
+        r=new Recettes("pates carbonara","blabla","lien");
+        listIng.add(new Ingredient("parmesan","liendemonimage"));
+        listIng.add(new Ingredient("pates","liendemonimage"));
+        listIng.add(new Ingredient("lardons","liendemonimage"));
+        listIng.add(new Ingredient("crème fraiche","liendemonimage"));
+        listIng.add(new Ingredient("échalottes","liendemonimage"));
+        listIng.add(new Ingredient("oeuf","liendemonimage"));
+        ingredientDao.saveAll(listIng);
+        r.setIngredient(listIng);
+        recetteDao.save(r);
+        us2.setIngredient(listIng);
+        userDao.save(us2);
+
+
+
+
+
         //TODO generer les recettes, les ingredients, les clients et leurs frigos
 
 

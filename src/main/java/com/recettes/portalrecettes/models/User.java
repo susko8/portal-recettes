@@ -17,7 +17,7 @@ public class User {
     @Column(name="nom")
     private String surname;
 
-    @OneToMany(cascade=CascadeType.ALL, fetch = FetchType.LAZY)
+    @OneToMany(fetch = FetchType.LAZY)
     List<Ingredient> Ingredient;
 
     public List<Ingredient> getIngredient() {
