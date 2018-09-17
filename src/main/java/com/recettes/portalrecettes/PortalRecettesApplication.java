@@ -52,11 +52,15 @@ public class PortalRecettesApplication
         User us = new User("samuel","12345","samuel","susoliak");
         us.setIngredient(listIng);
         userDao.save(us);
+
+
         Recettes r1 = new Recettes("gateau au chocolat","au talent","liendemonimage");
         List<Ingredient> listIng2 = new ArrayList<>();
         Ingredient item2= new Ingredient("chocolat","liendemonimage");
         listIng.add(item2);
         r1.setIngredient(listIng2);
         recetteDao.save(r1);
+
+
     }
 }

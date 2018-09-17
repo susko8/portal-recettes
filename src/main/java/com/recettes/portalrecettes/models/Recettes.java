@@ -13,7 +13,7 @@ public class Recettes {
     private String description;
     private String lien_img;
 
-    @OneToMany(cascade=CascadeType.ALL)
+    @OneToMany(cascade=CascadeType.ALL,fetch = FetchType.LAZY)
     List<Ingredient> Ingredient;
 
     public List<com.recettes.portalrecettes.models.Ingredient> getIngredient() {
