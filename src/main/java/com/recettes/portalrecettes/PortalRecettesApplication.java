@@ -37,10 +37,7 @@ public class PortalRecettesApplication {
                 return;
             }
         }
-        Ingredient ig = new Ingredient(nomIngredient, "");
-        Ingredient ingredient = ingredientDao.save(ig);
-        user.getIngredients().add(ingredient);
-        userDao.save(user);
+        System.out.println("ingredient non supporté !");
 
     }
 
