@@ -3,7 +3,7 @@ package com.recettes.portalrecettes.models;
 import javax.persistence.*;
 
 @Entity(name="courses")
-public class courses {
+public class Courses {
     @Id
     @GeneratedValue(strategy= GenerationType.AUTO)
     private int id;
@@ -12,7 +12,7 @@ public class courses {
     private int nombre;
     private int poids;
 
-    public courses(int idIngredient, int idUtilisateur) {
+    public Courses(int idIngredient, int idUtilisateur) {
         this.idIngredient = idIngredient;
         this.idUtilisateur = idUtilisateur;
     }

@@ -1,9 +1,10 @@
 package com.recettes.portalrecettes.models;
 
 import javax.persistence.*;
+import java.util.List;
 
 @Entity(name="recettes")
-public class recettes {
+public class Recettes {
 
     @Id
     @GeneratedValue(strategy= GenerationType.AUTO)
@@ -12,7 +13,18 @@ public class recettes {
     private String description;
     private String lien_img;
 
-    public recettes(String titre, String description, String lien_img) {
+    @OneToMany(cascade=CascadeType.ALL)
+    List<Ingredient> Ingredient;
+
+    public List<com.recettes.portalrecettes.models.Ingredient> getIngredient() {
+        return Ingredient;
+    }
+
+    public void setIngredient(List<com.recettes.portalrecettes.models.Ingredient> ingredient) {
+        Ingredient = ingredient;
+    }
+
+    public Recettes(String titre, String description, String lien_img) {
         this.titre = titre;
         this.description = description;
         this.lien_img = lien_img;

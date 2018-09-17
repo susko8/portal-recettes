@@ -20,6 +20,18 @@ public class UserController {
     return "registration";
     }
 
+    @GetMapping("/connection")
+    public String showLogin()
+    {
+        return "connection";
+    }
+
+    @GetMapping("/home")
+    public String showHome()
+    {
+        return "connection";
+    }
+
     @PostMapping("/login")
     public String doLogin()
     {

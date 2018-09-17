@@ -2,7 +2,7 @@ package com.recettes.portalrecettes.models;
 import javax.persistence.*;
 
 @Entity(name="ingredients")
-public class ingredients {
+public class Ingredient {
 
     @Id
     @GeneratedValue(strategy= GenerationType.AUTO)
@@ -12,7 +12,7 @@ public class ingredients {
     @Column(name="lien_img")
     private String lien_img;
 
-    public ingredients(String nom, String lien_img) {
+    public Ingredient(String nom, String lien_img) {
         this.nom = nom;
         this.lien_img = lien_img;
     }
@@ -43,7 +43,7 @@ public class ingredients {
 
     @Override
     public String toString() {
-        return "ingredients{" +
+        return "Ingredient{" +
                 "id=" + id +
                 ", nom='" + nom + '\'' +
                 ", lien_img='" + lien_img + '\'' +
