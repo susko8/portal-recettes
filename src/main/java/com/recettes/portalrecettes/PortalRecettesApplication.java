@@ -44,14 +44,28 @@ public class PortalRecettesApplication {
 
     }
 
+    public void addIngredientToRecipe(Recettes recette, String nomIngredient){
+        Iterable<Ingredient> listIngredients = ingredientDao.findAll();
+        for (Ingredient i : listIngredients) {
+            if (i.getNom().equals(nomIngredient)) {
+                recette.getIngredient().add(i);
+                recetteDao.save(recette);
+                return ;
+            }
+        }
+        Ingredient ig= new Ingredient(nomIngredient,"");
+        Ingredient ingredient = ingredientDao.save(ig);
+        recette.getIngredient().add(ingredient);
+        recetteDao.save(recette);
+    }
+
     @PostConstruct
     public void init() {
         //userDao.save(new User("samuel","12345","samuel","susoliak"));
         //ingredientDao.save(new Ingredient("chocolat","liendemonimage"));
         //recetteDao.save(new Recettes("gateau au chocolat","au talent","liendemonimage"));
-        //courseDao.save(new Courses(1,1));
-        //listeDao.save(new listeingredients(1,1));
-        //matcheDao.save(new Matches(1,1));
+
+
 
 
 //        List<Ingredient> listIng = new ArrayList<>();
