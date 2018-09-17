@@ -2,9 +2,173 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+
+    <title>Mon frigo, mes recettes !</title>
+
+    <!-- Bootstrap CSS -->
+    <link href="../css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Custom CSS -->
+    <link href="../css/style.css" rel="stylesheet">
+
+    <!-- Custom Fonts -->
+    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet"
+          type="text/css">
+
+    <style>
+        .navbar {
+          margin-bottom: 0;
+          border-radius: 0;
+        }
+
+    </style>
+
 </head>
+
 <body>
+
+<div id="wrapper">
+
+    <nav class="navbar navbar-inverse">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <a class="navbar-brand" href="#">Mon frigo, mes recettes !</a>
+            </div>
+            <ul class="nav navbar-nav">
+                <li><a href="/home">Accueil</a></li>
+            </ul>
+            <ul class="nav navbar-nav navbar-right">
+                <li><a href="#"><span class="fa fa-sign-out"></span>&nbspDéconnexion</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <div class="jumbotron">
+        <div class="container text-center">
+            <img src="https://simplynutrio2.com/wp-content/uploads/2014/11/Food_Differring_meal_edible_Still_Life_033639_-1200x400.jpg"
+                 alt="Image">
+            <h1>Mon compte</h1>
+        </div>
+    </div>
+
+    <div class="container text-center">
+        <div class="row">
+            <div class="col-sm-6">
+                <div class="panel-heading">
+                    <i class="fa fa-lemon-o"></i> Mon frigo
+                </div>
+                <div class="table-responsive">
+                    <table class="table table-hover table-striped">
+
+                        <tbody>
+                        <tr>
+                            <td>Image1</td>
+                            <td>Nom de la recette1</td>
+                            <td  class="text-right">Description1</td>
+                        </tr>
+                        <tr>
+                            <td>Image2</td>
+                            <td>Nom de la recette2</td>
+                            <td  class="text-right">Description2</td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <script>
+                                                var myArray = ['Sébastien', 'Laurence', 'Ludovic', 'Pauline', 'Guillaume'];
+                                                for (var i = 0, c = myArray.length; i < c; i++) {
+                                                document.writeln(myArray[i]);
+                                                }
+                                            </script>
+                            </td>
+                            <td class="text-right">
+                                <a href="#" class="btn btn-sm btn-warning"><i class="fa fa-pencil"></i> Modifier</a>
+                                <a href="#" class="btn btn-sm btn-danger"><i class="fa fa-trash"></i> Supprimer</a>
+                            </td>
+                            <td  class="text-right">Description3</td>
+                        </tr>
+
+                        </tbody>
+                    </table>
+                    <div class="text-center">
+                        <ul class="pagination">
+                            <li><a href="#">1</a></li>
+                            <li><a href="#">2</a></li>
+                            <li><a href="#">3</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-6">
+                <div class="panel-heading">
+                    <i class="fa fa-cutlery"></i> Mes recettes
+                </div>
+                <div class="table-responsive">
+                    <table class="table table-hover table-striped">
+
+                        <tbody>
+                        <tr>
+                            <td>Image1</td>
+                            <td>Nom de la recette1</td>
+                            <td  class="text-right">Description1</td>
+                        </tr>
+                        <tr>
+                            <td>Image2</td>
+                            <td>Nom de la recette2</td>
+                            <td  class="text-right">Description2</td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <script>
+                                                var myArray = ['Sébastien', 'Laurence', 'Ludovic', 'Pauline', 'Guillaume'];
+                                                for (var i = 0, c = myArray.length; i < c; i++) {
+                                                document.writeln(myArray[i]);
+                                                }
+                                </script>
+                            </td>
+                            <td>Nom de la recette3</td>
+                            <td  class="text-right">Description3</td>
+                        </tr>
+
+                        </tbody>
+                    </table>
+                    <div class="text-center">
+                        <ul class="pagination">
+                            <li><a href="#">1</a></li>
+                            <li><a href="#">2</a></li>
+                            <li><a href="#">3</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div><br>
+
+
+</div>
+
+
+
+<footer class="footer">
+    <div class="container">
+        <div class="row text-center">
+            &bullet; MIN 2018 - Tous droits réservés &bullet;
+        </div>
+    </div>
+</footer>
+
+<!-- jQuery -->
+<script src="../js/jquery-3.1.1.min.js"></script>
+
+<!-- Bootstrap Core JavaScript -->
+<script src="../js/bootstrap.min.js"></script>
+
+
+
 
 </body>
 </html>
