@@ -68,7 +68,7 @@ public class User {
         this.password = password;
     }
 
-    protected User() {}
+    public User() {}
 
     public User(String login, String password, String name, String surname) {
         this.login = login;

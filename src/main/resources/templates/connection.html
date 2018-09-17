@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -56,18 +56,19 @@
         </div>
     </div>
 
+
     <div class="container">
-        <form class="form-horizontal">
+        <form class="form-horizontal" action="#" th:action="@{/login}" th:object="${user}" method="post">
             <div class="form-group">
                 <label class="control-label col-sm-2" for="email">Email:</label>
                 <div class="col-sm-10">
-                    <input type="email" class="form-control" id="email" placeholder="Entrez votre email" name="email">
+                    <input type="email" class="form-control" id="email" placeholder="Entrez votre email" name="email"th:field="*{login}">
                 </div>
             </div>
             <div class="form-group">
                 <label class="control-label col-sm-2" for="pwd">Mot de passe:</label>
                 <div class="col-sm-10">
-                    <input type="password" class="form-control" id="pwd" placeholder="Entrez votre mot de passe" name="pwd">
+                    <input type="password" class="form-control" id="pwd" placeholder="Entrez votre mot de passe" name="pwd"th:field="*{password}">
                 </div>
             </div>
             <div class="form-group">

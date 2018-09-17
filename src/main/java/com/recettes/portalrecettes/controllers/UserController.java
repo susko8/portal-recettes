@@ -1,6 +1,5 @@
 package com.recettes.portalrecettes.controllers;
 
-import com.recettes.portalrecettes.models.Ingredient;
 import com.recettes.portalrecettes.models.User;
 import com.recettes.portalrecettes.persistence.UserDao;
 import com.recettes.portalrecettes.persistence.IngredientDao;
@@ -31,8 +30,10 @@ public class UserController {
     }
 
     @GetMapping("/connection")
-    public String showLogin()
+    public String showLogin(Model model)
     {
+        model.addAttribute("user",new User() );
+
         return "connection";
     }
 
@@ -73,7 +74,7 @@ public class UserController {
     }
 
     @PostMapping("/login")
-    public String doLogin()
+    public String doLogin(Model model)
     {
         //TODO check name and password then redirect to userhomepage (need to add model to doLogin)
         //User u = userDao.findLogin();
