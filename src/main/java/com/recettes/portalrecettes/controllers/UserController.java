@@ -1,5 +1,6 @@
 package com.recettes.portalrecettes.controllers;
 
+import com.recettes.portalrecettes.models.User;
 import com.recettes.portalrecettes.persistence.UserDao;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -38,9 +39,19 @@ public class UserController {
         return "account";
     }
 
+    @PostMapping("/enregistrer")
+    public String addUser(User user)
+    {
+        //TODO ajouter model a showRegistration
+        userDao.save(user);
+        //TODO redirect to user homepage
+        return "";
+    }
+
     @PostMapping("/login")
     public String doLogin()
     {
+        //TODO check name and password then redirect to userhomepage (need to add model to doLogin)
         return "";
     }
 
