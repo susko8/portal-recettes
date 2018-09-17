@@ -17,15 +17,15 @@ public class User {
     @Column(name="nom")
     private String surname;
 
-    @OneToMany(fetch = FetchType.LAZY)
-    List<Ingredient> Ingredient;
+    @ManyToMany(fetch = FetchType.LAZY)
+    List<Ingredient> ingredients;
 
-    public List<Ingredient> getIngredient() {
-        return Ingredient;
+    public List<Ingredient> getIngredients() {
+        return ingredients;
     }
 
-    public void setIngredient(List<Ingredient> ingredient) {
-        this.Ingredient = ingredient;
+    public void setIngredients(List<Ingredient> ingredients) {
+        this.ingredients = ingredients;
     }
 
     public String getName() {

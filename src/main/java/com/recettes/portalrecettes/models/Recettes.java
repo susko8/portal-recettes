@@ -13,7 +13,7 @@ public class Recettes {
     private String description;
     private String lien_img;
 
-    @OneToMany(fetch = FetchType.LAZY)
+    @ManyToMany(fetch = FetchType.LAZY)
     List<Ingredient> Ingredient;
 
     public Recettes() {

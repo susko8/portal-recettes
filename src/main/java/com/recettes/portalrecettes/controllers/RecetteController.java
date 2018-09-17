@@ -4,27 +4,24 @@ import com.recettes.portalrecettes.models.Ingredient;
 import com.recettes.portalrecettes.models.Recettes;
 import com.recettes.portalrecettes.models.User;
 import com.recettes.portalrecettes.persistence.UserDao;
-import com.recettes.portalrecettes.persistence.ingredientsDao;
+import com.recettes.portalrecettes.persistence.IngredientDao;
 import com.recettes.portalrecettes.persistence.recettesDao;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
 
 import java.util.ArrayList;
-import java.util.Collections;
-import java.util.Comparator;
 import java.util.List;
 
 @Controller
 public class RecetteController {
 
-    private final ingredientsDao ingreDao;
+    private final IngredientDao ingreDao;
     private final UserDao userDao;
     private final recettesDao recetteDao;
 
 
-    public RecetteController(UserDao userDao, ingredientsDao ingreDao,recettesDao recetteDao) {
+    public RecetteController(UserDao userDao, IngredientDao ingreDao, recettesDao recetteDao) {
         this.userDao = userDao;
         this.ingreDao = ingreDao;
         this.recetteDao = recetteDao;
@@ -37,12 +34,15 @@ public class RecetteController {
         Iterable<Ingredient> listIngredients = ingreDao.findAll();
         for (Ingredient i : listIngredients) {
             if (i.getNom().equals(nomIngredient)) {
-                user.getIngredient().add(i);
+                user.getIngredients().add(i);
                 userDao.save(user);
                 return "";
             }
         }
-        user.getIngredient().add(new Ingredient(nomIngredient,""));
+       Ingredient ig= new Ingredient(nomIngredient,"");
+        user.getIngredients().add(ig);
+        ingreDao.save(ig);
+        userDao.save(user);
         return "";
     }
 
@@ -65,27 +65,43 @@ public class RecetteController {
 //TODO fonction pour montrer tous les ingredients de frigo de client (relier a un page de front-end)
     public String showIngredients(User user, Model model)
     {
-        model.addAttribute("ingredients",user.getIngredient());
+        model.addAttribute("ingredients",user.getIngredients());
         return "";
     }
 
 //TODO fonction pour montrer les recettes que le client peut cuire avec les ingredients de son frigo
-//public String showPossibleRecettes(User user, Model model)
-//{
-//    List<Recettes> possibles = new ArrayList<>();
-//    List<Ingredient> ingClient = user.getIngredient();
-//    ingClient.sort(Comparator.comparing(Ingredient::getNom));
-//
-//
-//    for (Recettes r : recetteDao.findAll())
-//    {
-//
-//    }
-//    //model.addAttribute("possibles",possibles);
-//
-//    return "";
-//}
+public String showPossibleRecettes(User user, Model model)
+{
+    List<Recettes> possibles = new ArrayList<>();
+    for (Recettes r : recetteDao.findAll())
+    {
+        for(Ingredient i : r.getIngredient())
+        {
+            Boolean match = false;
+            //if()
+        }
+    }
+    model.addAttribute("possibles",possibles);
 
+    return "";
+}
+
+//    public  boolean equalLists(List<Ingredient> a, List<Ingredient> b){
+//        // Check for sizes and nulls
+//
+//        if (a == null && b == null) return true;
+//
+//
+//        if ((a == null && b!= null) || (a != null && b== null) || (a.size() != b.size()))
+//        {
+//            return false;
+//        }
+//
+//        // Sort and compare the two lists
+//        Collections.sort(x);
+//        Collections.sort();
+//        return a.equals(b);
+//    }
 
 
 
