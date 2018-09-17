@@ -16,6 +16,16 @@ public class Recettes {
     @OneToMany(fetch = FetchType.LAZY)
     List<Ingredient> Ingredient;
 
+    public Recettes() {
+    }
+
+    public Recettes(String titre, String description, String lien_img, List<com.recettes.portalrecettes.models.Ingredient> ingredient) {
+        this.titre = titre;
+        this.description = description;
+        this.lien_img = lien_img;
+        Ingredient = ingredient;
+    }
+
     public List<com.recettes.portalrecettes.models.Ingredient> getIngredient() {
         return Ingredient;
     }

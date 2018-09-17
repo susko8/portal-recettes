@@ -90,9 +90,6 @@ public class PortalRecettesApplication
         us2.setIngredient(listIng);
         userDao.save(us2);
 
-        listIng.sort(Comparator.comparing(Ingredient::getNom));
-        System.out.println(listIng.toString());
-
 
 
 
