@@ -39,6 +39,12 @@ public class UserController {
         return "account";
     }
 
+    @GetMapping("/recette")
+    public String showRecette()
+    {
+        return "recette";
+    }
+
     @PostMapping("/enregistrer")
     public String addUser(User user)
     {
