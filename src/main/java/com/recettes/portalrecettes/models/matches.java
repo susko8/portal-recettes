@@ -3,16 +3,19 @@ package com.recettes.portalrecettes.models;
 import javax.persistence.*;
 
 @Entity(name="matches")
-public class matches {
+public class Matches {
     @Id
     @GeneratedValue(strategy= GenerationType.AUTO)
     private int id;
     private int idRecette;
     private int idUtilisateur;
 
-    public matches(int idRecette, int idUtilisateur) {
+    public Matches(int idRecette, int idUtilisateur) {
         this.idRecette = idRecette;
         this.idUtilisateur = idUtilisateur;
+    }
+    public Matches(){
+
     }
 
     public int getId() {

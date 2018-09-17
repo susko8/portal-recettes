@@ -1,6 +1,5 @@
 package com.recettes.portalrecettes.models;
 import javax.persistence.*;
-import java.util.Objects;
 
 @Entity(name="ingredients")
 public class Ingredient {
@@ -16,6 +15,10 @@ public class Ingredient {
     public Ingredient(String nom, String lien_img) {
         this.nom = nom;
         this.lien_img = lien_img;
+    }
+
+    public Ingredient (){
+
     }
 
     public int getId() {
@@ -42,4 +45,12 @@ public class Ingredient {
         this.lien_img = lien_img;
     }
 
+    @Override
+    public String toString() {
+        return "ingredients{" +
+                "id=" + id +
+                ", nom='" + nom + '\'' +
+                ", lien_img='" + lien_img + '\'' +
+                '}';
+    }
 }

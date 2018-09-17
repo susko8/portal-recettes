@@ -16,6 +16,9 @@ public class Courses {
         this.idIngredient = idIngredient;
         this.idUtilisateur = idUtilisateur;
     }
+    public Courses(){
+
+    }
 
     public int getId() {
         return id;

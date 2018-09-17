@@ -19,6 +19,10 @@ public class listeingredients {
         this.idRecette = idRecette;
     }
 
+    public listeingredients(){
+
+    }
+
     public int getId() {
         return id;
     }
