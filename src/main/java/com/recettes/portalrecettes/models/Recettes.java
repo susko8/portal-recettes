@@ -13,7 +13,7 @@ public class Recettes {
     private String description;
     private String lien_img;
 
-    @ManyToMany(fetch = FetchType.LAZY)
+    @ManyToMany(fetch = FetchType.EAGER)
     List<Ingredient> Ingredient;
 
     public Recettes() {
@@ -71,5 +71,16 @@ public class Recettes {
 
     public void setLien_img(String lien_img) {
         this.lien_img = lien_img;
+    }
+
+    @Override
+    public String toString() {
+        return "Recettes{" +
+                "id=" + id +
+                ", titre='" + titre + '\'' +
+                ", description='" + description + '\'' +
+                ", lien_img='" + lien_img + '\'' +
+                ", Ingredient=" + Ingredient +
+                '}';
     }
 }

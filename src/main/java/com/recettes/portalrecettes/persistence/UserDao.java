@@ -1,8 +1,12 @@
 package com.recettes.portalrecettes.persistence;
 
 import com.recettes.portalrecettes.models.User;
+import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.CrudRepository;
+import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
+
+import javax.persistence.NamedQuery;
 
 /**
  * TODO class details.
@@ -13,4 +17,6 @@ import org.springframework.stereotype.Repository;
 public interface UserDao extends CrudRepository<User, Integer>
 {
 
+    @Query(value = "SELECT * FROM UTILISATEUR u WHERE u.login = :login",nativeQuery = true)
+    User findUserByLogin(@Param("login") String login);
 }

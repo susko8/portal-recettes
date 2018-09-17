@@ -33,7 +33,6 @@ public class UserController {
     public String showLogin(Model model)
     {
         model.addAttribute("user",new User() );
-
         return "connection";
     }
 
@@ -67,9 +66,9 @@ public class UserController {
     @PostMapping("/enregistrer")
     public String addUser(User user)
     {
-        //TODO ajouter model a showRegistration
+        //TODO ajouter model et showRegistration
         userDao.save(user);
-        //TODO redirect to user homepage
+        //TODO redirect to registration success page
         return "";
     }
 

@@ -17,7 +17,7 @@ public class User {
     @Column(name="nom")
     private String surname;
 
-    @ManyToMany(fetch = FetchType.LAZY)
+    @ManyToMany(fetch = FetchType.EAGER)
     List<Ingredient> ingredients;
 
     public List<Ingredient> getIngredients() {
@@ -69,6 +69,16 @@ public class User {
     }
 
     public User() {}
+
+    public Boolean hasIngredient(String name)
+    {
+        for(int i = 0 ; i<this.ingredients.size();i++)
+        {
+            if(name.equals(this.ingredients.get(i).getNom()))
+                return true;
+        }
+        return false;
+    }
 
     public User(String login, String password, String name, String surname) {
         this.login = login;
