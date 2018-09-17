@@ -1,8 +1,9 @@
 package com.recettes.portalrecettes.controllers;
 
+import com.recettes.portalrecettes.models.Ingredient;
 import com.recettes.portalrecettes.models.User;
 import com.recettes.portalrecettes.persistence.UserDao;
-import com.recettes.portalrecettes.persistence.ingredientsDao;
+import com.recettes.portalrecettes.persistence.IngredientDao;
 import com.recettes.portalrecettes.persistence.recettesDao;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -12,12 +13,12 @@ import org.springframework.web.bind.annotation.PostMapping;
 @Controller
 public class UserController {
 
-    private final ingredientsDao ingreDao;
+    private final IngredientDao ingreDao;
     private final UserDao userDao;
     private final recettesDao recetteDao;
 
 
-    public UserController(UserDao userDao, ingredientsDao ingreDao,recettesDao recetteDao) {
+    public UserController(UserDao userDao, IngredientDao ingreDao,recettesDao recetteDao) {
         this.userDao = userDao;
         this.ingreDao = ingreDao;
         this.recetteDao = recetteDao;
