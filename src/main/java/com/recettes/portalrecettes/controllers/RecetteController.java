@@ -52,11 +52,11 @@ public class RecetteController {
 
 
     //TODO fonction pour montrer tous les recettes sur une page (relier a un page de front-end)
-    @GetMapping("/account")
-    public String showHome(Model model) {
-        model.addAttribute("recettes", recetteDao.findAll());
-        return "account";
-    }
+//    @GetMapping("/account")
+//    public String showHome(Model model) {
+//        model.addAttribute("recettes", recetteDao.findAll());
+//        return "account";
+//    }
 
 
     //TODO fonction pour montrer tous les ingredients de frigo de client (relier a un page de front-end)
@@ -85,20 +85,20 @@ public class RecetteController {
         return model;
     }
 
-    @PostMapping()
-    public void addIngredientToRecipe(Recettes recette, String nomIngredient){
-        Iterable<Ingredient> listIngredients = ingreDao.findAll();
-        for (Ingredient i : listIngredients) {
-            if (i.getNom().equals(nomIngredient)) {
-                recette.getIngredient().add(i);
-                recetteDao.save(recette);
-                return ;
-            }
-        }
-        Ingredient ig= new Ingredient(nomIngredient,"");
-        Ingredient ingredient = ingreDao.save(ig);
-        recette.getIngredient().add(ingredient);
-        recetteDao.save(recette);
-    }
+//    @PostMapping()
+//    public void addIngredientToRecipe(Recettes recette, String nomIngredient){
+//        Iterable<Ingredient> listIngredients = ingreDao.findAll();
+//        for (Ingredient i : listIngredients) {
+//            if (i.getNom().equals(nomIngredient)) {
+//                recette.getIngredient().add(i);
+//                recetteDao.save(recette);
+//                return ;
+//            }
+//        }
+//        Ingredient ig= new Ingredient(nomIngredient,"");
+//        Ingredient ingredient = ingreDao.save(ig);
+//        recette.getIngredient().add(ingredient);
+//        recetteDao.save(recette);
+//    }
 
 }

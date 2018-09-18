@@ -50,10 +50,9 @@ public class UserController {
         return "index";
     }
 
-    @GetMapping("/account/{id}")
+    @GetMapping("/account")
     public String showAccount()
     {
-
         return "account";
     }
 
@@ -73,12 +72,16 @@ public class UserController {
     }
 
     @PostMapping("/login")
-    public String doLogin(Model model)
+    public String doLogin(Model model, User user)
     {
         //TODO check name and password then redirect to userhomepage (need to add model to doLogin)
-        //User u = userDao.findLogin();
-        int id =3;
-        return "account/"+id;
+//        User u = userDao.findUserByLogin(user.getLogin());
+//        if(u.equals(null))
+//        {
+//            return "/probleme";
+//        }//int id =3;
+//        return "account/"+user.getLogin();
+        return "";
     }
 
 
