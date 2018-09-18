@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 
+import javax.jws.WebParam;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -55,7 +56,8 @@ public class RecetteController {
     //TODO fonction pour montrer tous les recettes sur une page (relier a un page de front-end)
     @GetMapping("/account/{id}")
     public String showHome(Model model, @PathVariable int id) {
-        model.addAttribute("recettes", recetteDao.findAll());
+        model.addAttribute("ingredients", userDao.findUserById(id).getIngredients());
+        showPossibleRecettes(userDao.findUserById(id),model);
         return "account";
     }
 
@@ -63,11 +65,13 @@ public class RecetteController {
     //TODO fonction pour montrer tous les ingredients de frigo de client (relier a un page de front-end)
     public String showIngredients(User user, Model model) {
         model.addAttribute("ingredients", user.getIngredients());
+        showPossibleRecettes(user,model);
         return "";
     }
 
     //TODO fonction pour montrer les recettes que le client peut cuire avec les ingredients de son frigo
-    public Model showPossibleRecettes(User user, Model model) {
+    public void showPossibleRecettes(User user, Model model)
+    {
         Boolean flag = true;
         List<Recettes> possibles = new ArrayList<>();
         for (Recettes r : recetteDao.findAll()) {
@@ -83,7 +87,7 @@ public class RecetteController {
             flag = true;
         }
         model.addAttribute("possibles", possibles);
-        return model;
+        return ;
     }
 
 //    @PostMapping()

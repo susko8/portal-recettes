@@ -70,7 +70,7 @@ public class UserController {
         //TODO ajouter model et showRegistration
         userDao.save(user);
         //TODO redirect to registration success page
-        return "";
+        return "connection";
     }
 
     @PostMapping("/login")

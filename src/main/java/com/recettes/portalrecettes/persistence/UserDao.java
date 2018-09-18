@@ -20,4 +20,7 @@ public interface UserDao extends CrudRepository<User, Integer>
 
     @Query(value = "SELECT * FROM UTILISATEUR u WHERE u.login = :login",nativeQuery = true)
     User findUserByLogin(@Param("login") String login);
+
+    @Query(value = "SELECT * FROM UTILISATEUR u WHERE u.id = :id",nativeQuery = true)
+    User findUserById(@Param("login") int id);
 }
