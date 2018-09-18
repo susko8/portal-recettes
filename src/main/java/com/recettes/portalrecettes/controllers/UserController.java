@@ -8,6 +8,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.servlet.ModelAndView;
 
 @Controller
 public class UserController {
@@ -64,6 +65,12 @@ public class UserController {
         return "recette";
     }
 
+    @GetMapping("/probleme")
+    public String showProblem()
+    {
+        return "probleme";
+    }
+
     @PostMapping("/enregistrer")
     public String addUser(User user)
     {
@@ -74,17 +81,16 @@ public class UserController {
     }
 
     @PostMapping("/login")
-    public String doLogin(Model model, User user)
+    public ModelAndView doLogin(Model model, User user)
     {
         //TODO check password
         try {
             User u = userDao.findUserByLogin(user.getLogin());
-            return  recetteController.showHome(model,u.getId());
-           // return "account/"+u.getId();
+            return new ModelAndView("redirect:/account/"+u.getId());
         }
         catch (Exception e)
         {
-            return "/probleme";
+            return new ModelAndView("redirect:/probleme");
         }
     }
 
