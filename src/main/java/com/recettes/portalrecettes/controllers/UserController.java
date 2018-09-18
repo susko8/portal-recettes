@@ -65,13 +65,28 @@ public class UserController {
         return "probleme";
     }
 
+    @GetMapping("/registration_ok")
+    public String showRegistrationSuccess() {
+        return "registration_ok";
+    }
+
+    @GetMapping("/add_ingredient")
+    public String showAddIngredient() {
+        return "add_ingredient";
+    }
+
+    @GetMapping("/add_recipe")
+    public String showAddRecipe() {
+        return "add_recipe";
+    }
+
     @PostMapping("/enregistrer")
     public ModelAndView addUser(User user, Model model)
     {
         try {
             User u = userDao.findUserByLogin(user.getLogin());
             userDao.save(user);
-            return new ModelAndView("redirect:/home");
+            return new ModelAndView("redirect:/registration_ok");
         }
         catch (Exception e)
         {
