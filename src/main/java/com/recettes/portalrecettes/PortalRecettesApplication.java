@@ -41,21 +41,21 @@ public class PortalRecettesApplication {
         System.out.println("ingredient non supporté !");
 
     }
-//
-//    public void addIngredientToRecipe(Recettes recette, String nomIngredient){
-//        Iterable<Ingredient> listIngredients = ingredientDao.findAll();
-//        for (Ingredient i : listIngredients) {
-//            if (i.getNom().equals(nomIngredient)) {
-//                recette.getIngredient().add(i);
-//                recetteDao.save(recette);
-//                return ;
-//            }
-//        }
-//        Ingredient ig= new Ingredient(nomIngredient,"");
-//        Ingredient ingredient = ingredientDao.save(ig);
-//        recette.getIngredient().add(ingredient);
-//        recetteDao.save(recette);
-//    }
+
+    /*public void addIngredientToRecipe(Recettes recette, String nomIngredient){
+        Iterable<Ingredient> listIngredients = ingredientDao.findAll();
+        for (Ingredient i : listIngredients) {
+            if (i.getNom().equals(nomIngredient)) {
+                recette.getIngredient().add(i);
+                recetteDao.save(recette);
+                return ;
+            }
+        }
+        Ingredient ig= new Ingredient(nomIngredient,"");
+        Ingredient ingredient = ingredientDao.save(ig);
+        recette.getIngredient().add(ingredient);
+        recetteDao.save(recette);
+    }*/
 
     @PostConstruct
     public void init() {
@@ -88,20 +88,13 @@ public class PortalRecettesApplication {
         userDao.save(us3);
         userDao.save(us2);
 
-        Recettes rPates = new Recettes("Pates au parmesan", "Meilleures pates du monde","");
-        List<Ingredient> listPatesParmesan = new ArrayList<>();
-        listPatesParmesan.add(ingredientDao.save(new Ingredient("pates", "liendemonimage")));
-        listPatesParmesan.add(ingredientDao.save(new Ingredient("parmesan", "liendemonimage")));
-        rPates.setIngredient(listPatesParmesan);
-        recetteDao.save(rPates);
-
         listIng.clear();
         listIng.add(new Ingredient("fraises",""));
         listIng.add(new Ingredient("framboises",""));
         ingredientDao.saveAll(listIng);
-        //addIngredientToRecipe(r,"parmesan");
+       // addIngredientToRecipe(r,"parmesan");
 
-        System.out.println(r.getIngredient()+"!!!!!");
+       // System.out.println(userDao.findUserById(11);
 
     }
 }
