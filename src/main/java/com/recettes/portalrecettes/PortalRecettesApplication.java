@@ -41,6 +41,12 @@ public class PortalRecettesApplication {
         System.out.println("ingredient non supporté !");
 
     }
+    public void addListIngredientToUser(User user, List<Ingredient> ingredients){
+        for(Ingredient i:ingredients){
+            addIngredientToUser(user,i.getNom());
+        }
+
+    }
 
     /*public void addIngredientToRecipe(Recettes recette, String nomIngredient){
         Iterable<Ingredient> listIngredients = ingredientDao.findAll();
