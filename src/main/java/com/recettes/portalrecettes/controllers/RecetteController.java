@@ -45,12 +45,41 @@ public class RecetteController {
         System.out.println("ingredient non supporté !");
         return "";
     }
-
+//TODO ouverture du menu de recette
+    @GetMapping("/account/{id}/addRecipe")
+    public String InstanceRecipe(Model model){
+       model.addAttribute("ingredient", new Ingredient());
+        model.addAttribute("recette", new Recettes());
+        return "account";
+    }
 //TODO client ajoutre un recette (PostMapping)
-//    public String addRecette(User user, )
-//    {
-//
-//    }
+    @PostMapping("/account/{id}/addRecipe")
+    public String addListIngredientToRecipe( Recettes recette,Ingredient ingredient){
+        List <Ingredient> ingredients= new ArrayList<>();
+        String[] TempIng= ingredient.getNom().split(",");
+        for(String t : TempIng){
+            ingredients.add(new Ingredient(t,""));
+        }
+    for(Ingredient i:ingredients){
+        addIngredientToRecipe(recette,i.getNom());
+    }
+        return "account}";
+    }
+
+    public void addIngredientToRecipe(Recettes recette, String nomIngredient){
+        Iterable<Ingredient> listIngredients = ingreDao.findAll();
+        for (Ingredient i : listIngredients) {
+            if (i.getNom().equals(nomIngredient)) {
+                recette.getIngredient().add(i);
+                recetteDao.save(recette);
+                return ;
+            }
+        }
+        Ingredient ig= new Ingredient(nomIngredient,"");
+        Ingredient ingredient = ingreDao.save(ig);
+        recette.getIngredient().add(ingredient);
+        recetteDao.save(recette);
+    }
 
 
     //TODO fonction pour montrer tous les recettes sur une page (relier a un page de front-end)
