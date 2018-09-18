@@ -29,18 +29,18 @@ public class PortalRecettesApplication {
         SpringApplication.run(PortalRecettesApplication.class, args);
     }
 
-//    public void addIngredientToUser(User user, String nomIngredient) {
-//        Iterable<Ingredient> listIngredients = ingredientDao.findAll();
-//        for (Ingredient i : listIngredients) {
-//            if (i.getNom().equals(nomIngredient)) {
-//                user.getIngredients().add(i);
-//                userDao.save(user);
-//                return;
-//            }
-//        }
-//        System.out.println("ingredient non supporté !");
-//
-//    }
+    public void addIngredientToUser(User user, String nomIngredient) {
+        Iterable<Ingredient> listIngredients = ingredientDao.findAll();
+        for (Ingredient i : listIngredients) {
+            if (i.getNom().equals(nomIngredient)) {
+                user.getIngredients().add(i);
+                userDao.save(user);
+                return;
+            }
+        }
+        System.out.println("ingredient non supporté !");
+
+    }
 
     public void addIngredientToRecipe(Recettes recette, String nomIngredient){
         Iterable<Ingredient> listIngredients = ingredientDao.findAll();
@@ -61,7 +61,7 @@ public class PortalRecettesApplication {
     public void init() {
         User us1 = new User("quentin@gmail.com", "miam", "quentin", "unal");
         User us2 = new User("laurine@gmail.com", "1234", "laurine", "torossian");
-        userDao.save(new User("sophie@gmail.com", "tasty", "sophie", "aitis"));
+        User us3 = new User("sophie@gmail.com", "tasty", "sophie", "aitis");
 
         Recettes r = new Recettes("omellette au fromage", "blabla", "lien");
         List<Ingredient> listIng = new ArrayList<>();
@@ -84,8 +84,16 @@ public class PortalRecettesApplication {
         r.setIngredient(listIng);
         recetteDao.save(r);
         us2.setIngredients(listIng);
+        us3.setIngredients(listIng);
+        userDao.save(us3);
         userDao.save(us2);
 
+        listIng.clear();
+        listIng.add(new Ingredient("fraises",""));
+        listIng.add(new Ingredient("framboises",""));
+        ingredientDao.saveAll(listIng);
         addIngredientToRecipe(r,"parmesan");
+
+
     }
 }
