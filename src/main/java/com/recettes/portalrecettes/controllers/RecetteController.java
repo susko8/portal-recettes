@@ -56,8 +56,8 @@ public class RecetteController {
     //TODO fonction pour montrer tous les recettes sur une page (relier a un page de front-end)
     @GetMapping("/account/{id}")
     public String showHome(Model model, @PathVariable int id) {
-        model.addAttribute("ingredients", userDao.findUserById(id).getIngredients());
-        showPossibleRecettes(userDao.findUserById(id),model);
+        //model.addAttribute("ingredients", userDao.findUserById(id).getIngredients());
+        //showPossibleRecettes(userDao.findUserById(id),model);
         return "account";
     }
 
@@ -65,7 +65,7 @@ public class RecetteController {
     //TODO fonction pour montrer tous les ingredients de frigo de client (relier a un page de front-end)
     public String showIngredients(User user, Model model) {
         model.addAttribute("ingredients", user.getIngredients());
-        showPossibleRecettes(user,model);
+        //showPossibleRecettes(user,model);
         return "";
     }
 
