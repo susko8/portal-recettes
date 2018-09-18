@@ -65,7 +65,7 @@
                 </div>
                 <div class="table-responsive">
 
-                    <!--<table class="table table-hover table-striped">
+                    <table class="table table-hover table-striped">
 
                         <thead>
                         <tr>
@@ -76,32 +76,12 @@
                         </thead>
 
                         <tbody>
-                        <tr th:each="recettes : ${possibles}">
-                            <td th:text="${recettes.lien_img}"></td>
-                            <td th:text="${recettes.titre}"></td>
+                        <tr th:each="ingredient : ${ingredients}">
+                            <td th:text="${ingredient.lien_img}"></td>
+                            <td th:text="${ingredient.nom}"></td>
                             <td class="text-right">
                                 <i class="fa fa-trash"></i> Supprimer
                             </td>
-                        </tr>
-
-                        </tbody>
-                    </table>-->
-
-                    <table class="table table-hover table-striped">
-
-                        <thead>
-                        <tr>
-                            <th></th>
-                            <th>Nom</th>
-                            <th class="text-right">Description</th>
-                        </tr>
-                        </thead>
-
-                        <tbody>
-                        <tr th:each="ingredient : ${ingedients}">
-                            <td th:text="${ingredients.lien_img}"></td>
-                            <td th:text="${ingredients.nom}"></td>
-                            <td  class="text-right" th:text="${ingredients.nom}"></td>
                         </tr>
 
                         </tbody>
@@ -124,28 +104,21 @@
                 <div class="table-responsive">
                     <table class="table table-hover table-striped">
 
-                        <tbody>
+                        <thead>
                         <tr>
-                            <td>Image1</td>
-                            <td>Nom de la recette1</td>
-                            <td  class="text-right">Description1</td>
+                            <th></th>
+                            <th>Nom</th>
+                            <th class="text-right"></th>
                         </tr>
-                        <tr th:each="recettes : ${data}">
-                            <td th:text="${recettes.lien_img}"></td>
-                            <td th:text="${recettes.titre}"></td>
+                        </thead>
 
-                        </tr>
-                        <tr>
-                            <td>
-                                <script>
-                                                var myArray = ['Sébastien', 'Laurence', 'Ludovic', 'Pauline', 'Guillaume'];
-                                                for (var i = 0, c = myArray.length; i < c; i++) {
-                                                document.writeln(myArray[i]);
-                                                }
-                                </script>
+                        <tbody>
+                        <tr th:each="ingredient : ${ingredients}">
+                            <td th:text="${ingredient.lien_img}"></td>
+                            <td th:text="${ingredient.nom}"></td>
+                            <td class="text-right">
+                                <i class="fa fa-trash"></i> Supprimer
                             </td>
-                            <td>Nom de la recette3</td>
-                            <td  class="text-right">Description3</td>
                         </tr>
 
                         </tbody>

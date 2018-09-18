@@ -94,6 +94,7 @@ public class PortalRecettesApplication {
         ingredientDao.saveAll(listIng);
         addIngredientToRecipe(r,"parmesan");
 
+       // System.out.println(userDao.findUserById(11);
 
     }
 }
