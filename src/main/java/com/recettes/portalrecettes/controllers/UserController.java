@@ -85,13 +85,18 @@ public class UserController {
     {
         try {
             User u = userDao.findUserByLogin(user.getLogin());
-            userDao.save(user);
-            return new ModelAndView("redirect:/registration_ok");
+            if (user.getLogin().equals(u.getLogin())) {
+                System.out.println("login deja existant");
+            }
+            return new ModelAndView("redirect:/probleme");
         }
         catch (Exception e)
         {
-            return new ModelAndView("redirect:/probleme");
+            e.printStackTrace();
+            userDao.save(user);
+            return new ModelAndView("redirect:/registration_ok");
         }
+
     }
 
     @PostMapping("/login")
