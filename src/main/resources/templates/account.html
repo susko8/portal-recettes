@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -60,40 +60,54 @@
         <div class="row">
             <div class="col-sm-6">
                 <div class="panel-heading">
-                    <i class="fa fa-lemon-o"></i> Mon frigo
+                    <i class="fa fa-lemon-o"></i> Mon frigo <br/><br/>
+                    <i class="fa fa-plus"></i> Ajouter un ingrédient
                 </div>
                 <div class="table-responsive">
-                    <table class="table table-hover table-striped">
+
+                    <!--<table class="table table-hover table-striped">
+
+                        <thead>
+                        <tr>
+                            <th></th>
+                            <th>Nom</th>
+                            <th class="text-right"></th>
+                        </tr>
+                        </thead>
 
                         <tbody>
-                        <tr>
-                            <td>Image1</td>
-                            <td>Nom de la recette1</td>
-                            <td  class="text-right">Description1</td>
-                        </tr>
-                        <tr>
-                            <td>Image2</td>
-                            <td>Nom de la recette2</td>
-                            <td  class="text-right">Description2</td>
-                        </tr>
-                        <tr>
-                            <td>
-                                <script>
-                                                var myArray = ['Sébastien', 'Laurence', 'Ludovic', 'Pauline', 'Guillaume'];
-                                                for (var i = 0, c = myArray.length; i < c; i++) {
-                                                document.writeln(myArray[i]);
-                                                }
-                                            </script>
-                            </td>
+                        <tr th:each="recettes : ${possibles}">
+                            <td th:text="${recettes.lien_img}"></td>
+                            <td th:text="${recettes.titre}"></td>
                             <td class="text-right">
-                                <a href="#" class="btn btn-sm btn-warning"><i class="fa fa-pencil"></i> Modifier</a>
-                                <a href="#" class="btn btn-sm btn-danger"><i class="fa fa-trash"></i> Supprimer</a>
+                                <i class="fa fa-trash"></i> Supprimer
                             </td>
-                            <td  class="text-right">Description3</td>
+                        </tr>
+
+                        </tbody>
+                    </table>-->
+
+                    <table class="table table-hover table-striped">
+
+                        <thead>
+                        <tr>
+                            <th></th>
+                            <th>Nom</th>
+                            <th class="text-right">Description</th>
+                        </tr>
+                        </thead>
+
+                        <tbody>
+                        <tr th:each="ingredient : ${ingedients}">
+                            <td th:text="${ingredients.lien_img}"></td>
+                            <td th:text="${ingredients.nom}"></td>
+                            <td  class="text-right" th:text="${ingredients.nom}"></td>
                         </tr>
 
                         </tbody>
                     </table>
+
+
                     <div class="text-center">
                         <ul class="pagination">
                             <li><a href="#">1</a></li>
@@ -116,10 +130,10 @@
                             <td>Nom de la recette1</td>
                             <td  class="text-right">Description1</td>
                         </tr>
-                        <tr>
-                            <td>Image2</td>
-                            <td>Nom de la recette2</td>
-                            <td  class="text-right">Description2</td>
+                        <tr th:each="recettes : ${data}">
+                            <td th:text="${recettes.lien_img}"></td>
+                            <td th:text="${recettes.titre}"></td>
+
                         </tr>
                         <tr>
                             <td>
