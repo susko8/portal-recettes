@@ -42,7 +42,7 @@ public class PortalRecettesApplication {
 
     }
 
-    public void addIngredientToRecipe(Recettes recette, String nomIngredient){
+    /*public void addIngredientToRecipe(Recettes recette, String nomIngredient){
         Iterable<Ingredient> listIngredients = ingredientDao.findAll();
         for (Ingredient i : listIngredients) {
             if (i.getNom().equals(nomIngredient)) {
@@ -55,7 +55,7 @@ public class PortalRecettesApplication {
         Ingredient ingredient = ingredientDao.save(ig);
         recette.getIngredient().add(ingredient);
         recetteDao.save(recette);
-    }
+    }*/
 
     @PostConstruct
     public void init() {
@@ -92,7 +92,7 @@ public class PortalRecettesApplication {
         listIng.add(new Ingredient("fraises",""));
         listIng.add(new Ingredient("framboises",""));
         ingredientDao.saveAll(listIng);
-        addIngredientToRecipe(r,"parmesan");
+       // addIngredientToRecipe(r,"parmesan");
 
        // System.out.println(userDao.findUserById(11);
 
