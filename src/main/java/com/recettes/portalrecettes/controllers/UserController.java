@@ -13,14 +13,16 @@ import org.springframework.web.bind.annotation.PostMapping;
 public class UserController {
 
     private final IngredientDao ingreDao;
+    private final RecetteController recetteController;
     private final UserDao userDao;
     private final recettesDao recetteDao;
 
 
-    public UserController(UserDao userDao, IngredientDao ingreDao,recettesDao recetteDao) {
+    public UserController(UserDao userDao, IngredientDao ingreDao,recettesDao recetteDao, RecetteController recetteController) {
         this.userDao = userDao;
         this.ingreDao = ingreDao;
         this.recetteDao = recetteDao;
+        this.recetteController = recetteController;
     }
 
     @GetMapping("/registration")
@@ -74,14 +76,16 @@ public class UserController {
     @PostMapping("/login")
     public String doLogin(Model model, User user)
     {
-        //TODO check name and password then redirect to userhomepage (need to add model to doLogin)
-//        User u = userDao.findUserByLogin(user.getLogin());
-//        if(u.equals(null))
-//        {
-//            return "/probleme";
-//        }//int id =3;
-//        return "account/"+user.getLogin();
-        return "";
+        //TODO check password
+        try {
+            User u = userDao.findUserByLogin(user.getLogin());
+            return  recetteController.showHome(model,u.getId());
+           // return "account/"+u.getId();
+        }
+        catch (Exception e)
+        {
+            return "/probleme";
+        }
     }
 
 

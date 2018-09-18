@@ -9,6 +9,7 @@ import com.recettes.portalrecettes.persistence.recettesDao;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 
 import java.util.ArrayList;
@@ -52,11 +53,11 @@ public class RecetteController {
 
 
     //TODO fonction pour montrer tous les recettes sur une page (relier a un page de front-end)
-//    @GetMapping("/account")
-//    public String showHome(Model model) {
-//        model.addAttribute("recettes", recetteDao.findAll());
-//        return "account";
-//    }
+    @GetMapping("/account/{id}")
+    public String showHome(Model model, @PathVariable int id) {
+        model.addAttribute("recettes", recetteDao.findAll());
+        return "account";
+    }
 
 
     //TODO fonction pour montrer tous les ingredients de frigo de client (relier a un page de front-end)

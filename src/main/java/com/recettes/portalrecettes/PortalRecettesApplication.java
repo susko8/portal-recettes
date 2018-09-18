@@ -59,9 +59,9 @@ public class PortalRecettesApplication {
 
     @PostConstruct
     public void init() {
-        User us1 = new User("quentin", "miam", "quentin", "unal");
-        User us2 = new User("laurine", "1234", "laurine", "torossian");
-        userDao.save(new User("sophie", "tasty", "sophie", "aitis"));
+        User us1 = new User("quentin@gmail.com", "miam", "quentin", "unal");
+        User us2 = new User("laurine@gmail.com", "1234", "laurine", "torossian");
+        userDao.save(new User("sophie@gmail.com", "tasty", "sophie", "aitis"));
 
         Recettes r = new Recettes("omellette au fromage", "blabla", "lien");
         List<Ingredient> listIng = new ArrayList<>();
@@ -79,7 +79,7 @@ public class PortalRecettesApplication {
         listIng.add(new Ingredient("lardons", "liendemonimage"));
         listIng.add(new Ingredient("crème fraiche", "liendemonimage"));
         listIng.add(new Ingredient("échalottes", "liendemonimage"));
-        listIng.add(new Ingredient("oeuf", "liendemonimage"));
+        //listIng.add(new Ingredient("oeuf", "liendemonimage"));
         ingredientDao.saveAll(listIng);
         r.setIngredient(listIng);
         recetteDao.save(r);
