@@ -66,13 +66,17 @@ public class UserController {
     }
 
     @PostMapping("/enregistrer")
-    public String addUser(User user, Model model)
+    public ModelAndView addUser(User user, Model model)
     {
-//        if(user.getLogin())
-////        {
-////            userDao.save(user);
-////        }
-        return "success";
+        try {
+            User u = userDao.findUserByLogin(user.getLogin());
+            userDao.save(user);
+            return new ModelAndView("redirect:/home");
+        }
+        catch (Exception e)
+        {
+            return new ModelAndView("redirect:/probleme");
+        }
     }
 
     @PostMapping("/login")
