@@ -117,6 +117,7 @@ public class RecetteController {
             flag = true;
         }
         model.addAttribute("possibles", possibles);
+        System.out.println(possibles);
         return ;
     }
 

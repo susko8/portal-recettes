@@ -68,27 +68,41 @@ public class PortalRecettesApplication {
         User us1 = new User("quentin@gmail.com", "miam", "quentin", "unal");
         User us2 = new User("laurine@gmail.com", "1234", "laurine", "torossian");
         User us3 = new User("sophie@gmail.com", "tasty", "sophie", "aitis");
+        User us4 = new User("samuel@gmail.com", "12345", "samuel", "susoliak");
 
-        Recettes r = new Recettes("omellette au fromage", "blabla", "lien");
+
+        userDao.save(us1);
+        userDao.save(us2);
+        userDao.save(us3);
+        userDao.save(us4);
+
+        Recettes r1 = new Recettes("omellette au fromage", "blabla", "lien");
+
         List<Ingredient> listIng = new ArrayList<>();
         listIng.add(new Ingredient("oeuf", "liendemonimage"));
         listIng.add(new Ingredient("fromage rapé", "liendemonimage"));
         ingredientDao.saveAll(listIng);
-        r.setIngredient(listIng);
+
+        r1.setIngredient(listIng);
         us1.setIngredients(listIng);
-        recetteDao.save(r);
+        us4.setIngredients(listIng);
+        recetteDao.save(r1);
         userDao.save(us1);
+        userDao.save(us4);
+
         listIng.clear();
-        r = new Recettes("pates carbonara", "blabla", "lien");
+
+        Recettes r2 = new Recettes("pates carbonara", "blabla", "lien");
+
         listIng.add(new Ingredient("parmesan", "liendemonimage"));
         listIng.add(new Ingredient("pates", "liendemonimage"));
         listIng.add(new Ingredient("lardons", "liendemonimage"));
         listIng.add(new Ingredient("crème fraiche", "liendemonimage"));
         listIng.add(new Ingredient("échalottes", "liendemonimage"));
-        //listIng.add(new Ingredient("oeuf", "liendemonimage"));
         ingredientDao.saveAll(listIng);
-        r.setIngredient(listIng);
-        recetteDao.save(r);
+        r2.setIngredient(listIng);
+        recetteDao.save(r2);
+
         us2.setIngredients(listIng);
         us3.setIngredients(listIng);
         userDao.save(us3);
@@ -100,7 +114,7 @@ public class PortalRecettesApplication {
         ingredientDao.saveAll(listIng);
        // addIngredientToRecipe(r,"parmesan");
 
-       // System.out.println(userDao.findUserById(11);
+       //System.out.println(userDao.findUserById(11);
 
     }
 }

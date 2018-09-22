@@ -34,7 +34,7 @@
 
 <div id="wrapper">
 
-    <nav class="navbar navbar-inverse">
+    <nav class="navbar navbar-inverse navbar-fixed-top">
         <div class="container-fluid">
             <div class="navbar-header">
                 <a class="navbar-brand" href="#">Mon frigo, mes recettes !</a>
@@ -113,10 +113,10 @@
                         </thead>
 
                         <tbody>
-                        <tr th:each="ingredient : ${ingredients}">
-                            <td th:text="${ingredient.lien_img}"></td>
-                            <td th:text="${ingredient.nom}"></td>
-                            <td class="text-right" th:text="${ingredient.nom}"></td>
+                        <tr th:each=" recettes : ${possibles}">
+                            <td th:text="${recettes.lien_img}"></td>
+                            <td th:text="${recettes.titre}"></td>
+                            <td class="text-right" th:text="${recettes.description}"></td>
                         </tr>
 
                         </tbody>
