@@ -70,15 +70,6 @@ public class UserController {
         return "registration_ok";
     }
 
-    @GetMapping("/add_ingredient")
-    public String showAddIngredient() {
-        return "add_ingredient";
-    }
-
-    @GetMapping("/add_recipe")
-    public String showAddRecipe() {
-        return "add_recipe";
-    }
 
     @PostMapping("/enregistrer")
     public ModelAndView addUser(User user, Model model)

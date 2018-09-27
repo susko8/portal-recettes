@@ -48,21 +48,6 @@ public class PortalRecettesApplication {
 
     }
 
-    /*public void addIngredientToRecipe(Recettes recette, String nomIngredient){
-        Iterable<Ingredient> listIngredients = ingredientDao.findAll();
-        for (Ingredient i : listIngredients) {
-            if (i.getNom().equals(nomIngredient)) {
-                recette.getIngredient().add(i);
-                recetteDao.save(recette);
-                return ;
-            }
-        }
-        Ingredient ig= new Ingredient(nomIngredient,"");
-        Ingredient ingredient = ingredientDao.save(ig);
-        recette.getIngredient().add(ingredient);
-        recetteDao.save(recette);
-    }*/
-
     @PostConstruct
     public void init() {
         User us1 = new User("quentin@gmail.com", "miam", "quentin", "unal");

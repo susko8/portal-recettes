@@ -11,6 +11,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.servlet.ModelAndView;
 
 import javax.jws.WebParam;
 import java.util.ArrayList;
@@ -23,6 +24,8 @@ public class RecetteController {
     private final UserDao userDao;
     private final recettesDao recetteDao;
 
+    private User loggedUser;
+
 
     public RecetteController(UserDao userDao, IngredientDao ingreDao, recettesDao recetteDao) {
         this.userDao = userDao;
@@ -30,78 +33,104 @@ public class RecetteController {
         this.recetteDao = recetteDao;
     }
 
+    @GetMapping("/user/add_ingredient")
+    public String showAddIngredient(Model model) {
+        model.addAttribute("ingredient", new Ingredient());
+        return "add_ingredient";
+    }
 
-    //TODO client ajoute ingredient dans son frigo (PostMapping)
-    //@PostMapping
-    public String addUserIngredient(User user, String nomIngredient) {
+    @GetMapping("/user/add_recipe")
+    public String showAddRecipe(Model model) {
+        model.addAttribute("recette", new Recettes());
+        return "add_recipe";
+    }
+
+
+//    client ajoute plusieurs ingredient dans son frigo (PostMapping)
+//    @PostMapping("/account/addIngredient")
+//    public String addUserIngredient(String nomIngredient,Model model) {
+//        Iterable<Ingredient> listIngredients = ingreDao.findAll();
+//        for (Ingredient i : listIngredients) {
+//            if (i.getNom().equals(nomIngredient)) {
+//                loggedUser.getIngredients().add(i);
+//                userDao.save(loggedUser);
+//                return "";
+//            }
+//        }
+//        System.out.println("ingredient non supporté !");
+//        return "";
+//    }
+
+    @PostMapping("/account/addIngredient")
+    public ModelAndView addOneUserIngredient(Ingredient ingredient,Model model) {
         Iterable<Ingredient> listIngredients = ingreDao.findAll();
-        for (Ingredient i : listIngredients) {
-            if (i.getNom().equals(nomIngredient)) {
-                user.getIngredients().add(i);
-                userDao.save(user);
-                return "";
+        //existing ingredient in user
+        Iterable<Ingredient> listIngredientsUser = loggedUser.getIngredients();
+        for (Ingredient i : listIngredientsUser) {
+            if (i.getNom().equals(ingredient.getNom())) {
+                return new ModelAndView("redirect:/account/" + loggedUser.getId());
             }
         }
-        System.out.println("ingredient non supporté !");
-        return "";
-    }
-//TODO ouverture du menu de recette
-    @GetMapping("/account/{id}/addRecipe")
-    public String InstanceRecipe(Model model){
-       model.addAttribute("ingredient", new Ingredient());
-        model.addAttribute("recette", new Recettes());
-        return "account";
-    }
-//TODO client ajoutre un recette (PostMapping)
-    @PostMapping("/account/{id}/addRecipe")
-    public String addListIngredientToRecipe( Recettes recette,Ingredient ingredient){
-        List <Ingredient> ingredients= new ArrayList<>();
-        String[] TempIng= ingredient.getNom().split(",");
-        for(String t : TempIng){
-            ingredients.add(new Ingredient(t,""));
+        ////existing ingredient in app ingredients
+        for (Ingredient i : listIngredients) {
+            if (i.getNom().equals(ingredient.getNom())) {
+                loggedUser.getIngredients().add(i);
+                userDao.save(loggedUser);
+                return new ModelAndView("redirect:/account/" + loggedUser.getId());
+            }
         }
-    for(Ingredient i:ingredients){
-        addIngredientToRecipe(recette,i.getNom());
-    }
-        return "account}";
+        //non existing ingredient
+        ingreDao.save(ingredient);
+        loggedUser.getIngredients().add(ingredient);
+        userDao.save(loggedUser);
+        return new ModelAndView("redirect:/account/" + loggedUser.getId());
     }
 
-    public void addIngredientToRecipe(Recettes recette, String nomIngredient){
+    @PostMapping("/account/addRecipe")
+    public ModelAndView addRecipe(Recettes recette, Model model) {
+        Recettes receteToSave =new Recettes();
+        receteToSave.setDescription(recette.getDescription());
+        receteToSave.setTitre(recette.getTitre());
+        receteToSave.setIngredient(new ArrayList<>());
+        receteToSave.setLien_img(null);
+        recetteDao.save(receteToSave);
+        List<Ingredient> ingredients = new ArrayList<>();
+        String[] TempIng = recette.getIngredient().get(0).getNom().split(",");
+        for (String t : TempIng) {
+            ingredients.add(new Ingredient(t.trim(), ""));
+        }
+        for (Ingredient i : ingredients) {
+            addIngredientToRecipe(receteToSave, i.getNom());
+        }
+        return new ModelAndView("redirect:/account/" + loggedUser.getId());
+    }
+
+    public void addIngredientToRecipe(Recettes recette, String nomIngredient) {
         Iterable<Ingredient> listIngredients = ingreDao.findAll();
         for (Ingredient i : listIngredients) {
             if (i.getNom().equals(nomIngredient)) {
                 recette.getIngredient().add(i);
                 recetteDao.save(recette);
-                return ;
+                return;
             }
         }
-        Ingredient ig= new Ingredient(nomIngredient,"");
+        Ingredient ig = new Ingredient(nomIngredient, "");
         Ingredient ingredient = ingreDao.save(ig);
         recette.getIngredient().add(ingredient);
         recetteDao.save(recette);
     }
 
 
-    //TODO fonction pour montrer tous les recettes sur une page (relier a un page de front-end)
     @GetMapping("/account/{id}")
-    public String showUserHome(Model model, @PathVariable("id") int id)
-    {
+    public String showUserHome(Model model, @PathVariable("id") int id) {
+        loggedUser = userDao.findUserById(id);
         model.addAttribute("ingredients", userDao.findUserById(id).getIngredients());
-        showPossibleRecettes(userDao.findUserById(id),model);
+        showPossibleRecettes(userDao.findUserById(id), model);
         return "account";
     }
 
 
-    //TODO fonction pour montrer tous les ingredients de frigo de client (relier a un page de front-end)
-    public String showIngredients(User user, Model model) {
-        model.addAttribute("ingredients", user.getIngredients());
-        showPossibleRecettes(user,model);
-        return "";
-    }
-
-    //TODO fonction pour montrer les recettes que le client peut cuire avec les ingredients de son frigo
-    public void showPossibleRecettes(User user, Model model)
-    {
+    public void showPossibleRecettes(User user, Model model) {
         Boolean flag = true;
         List<Recettes> possibles = new ArrayList<>();
         for (Recettes r : recetteDao.findAll()) {
@@ -118,23 +147,6 @@ public class RecetteController {
         }
         model.addAttribute("possibles", possibles);
         System.out.println(possibles);
-        return ;
+        return;
     }
-
-//    @PostMapping()
-//    public void addIngredientToRecipe(Recettes recette, String nomIngredient){
-//        Iterable<Ingredient> listIngredients = ingreDao.findAll();
-//        for (Ingredient i : listIngredients) {
-//            if (i.getNom().equals(nomIngredient)) {
-//                recette.getIngredient().add(i);
-//                recetteDao.save(recette);
-//                return ;
-//            }
-//        }
-//        Ingredient ig= new Ingredient(nomIngredient,"");
-//        Ingredient ingredient = ingreDao.save(ig);
-//        recette.getIngredient().add(ingredient);
-//        recetteDao.save(recette);
-//    }
-
 }
