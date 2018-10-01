@@ -105,6 +105,13 @@ public class RecetteController {
         return new ModelAndView("redirect:/account/" + loggedUser.getId());
     }
 
+    @GetMapping("/deleteIngredient/{id}")
+    public String deleteIngredient(@PathVariable("id") int id) {
+        loggedUser.getIngredients().remove(loggedUser.getUserIngredientById(id));
+        userDao.save(loggedUser);
+        return "index";
+    }
+
     public void addIngredientToRecipe(Recettes recette, String nomIngredient) {
         Iterable<Ingredient> listIngredients = ingreDao.findAll();
         for (Ingredient i : listIngredients) {

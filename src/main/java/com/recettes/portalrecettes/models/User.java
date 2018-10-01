@@ -80,6 +80,16 @@ public class User {
         return false;
     }
 
+    public Ingredient getUserIngredientById(int id)
+    {
+        for(int i = 0 ; i<this.ingredients.size();i++)
+        {
+            if(id==this.getIngredients().get(i).getId())
+                return this.getIngredients().get(i);
+        }
+        return null;
+    }
+
     public User(String login, String password, String name, String surname) {
         this.login = login;
         this.password = password;
