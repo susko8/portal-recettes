@@ -6,11 +6,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
-import org.springframework.ui.Model;
-
 import javax.annotation.PostConstruct;
 import java.util.ArrayList;
-import java.util.Comparator;
 import java.util.List;
 
 @SpringBootApplication
@@ -22,7 +19,7 @@ public class PortalRecettesApplication {
     @Autowired
     private IngredientDao ingredientDao;
     @Autowired
-    private recettesDao recetteDao;
+    private RecettesDao recetteDao;
 
 
     public static void main(String[] args) {
@@ -97,9 +94,7 @@ public class PortalRecettesApplication {
         listIng.add(new Ingredient("fraises",""));
         listIng.add(new Ingredient("framboises",""));
         ingredientDao.saveAll(listIng);
-       // addIngredientToRecipe(r,"parmesan");
 
-       //System.out.println(userDao.findUserById(11);
 
     }
 }

@@ -5,15 +5,13 @@ import com.recettes.portalrecettes.models.Recettes;
 import com.recettes.portalrecettes.models.User;
 import com.recettes.portalrecettes.persistence.UserDao;
 import com.recettes.portalrecettes.persistence.IngredientDao;
-import com.recettes.portalrecettes.persistence.recettesDao;
+import com.recettes.portalrecettes.persistence.RecettesDao;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.servlet.ModelAndView;
-
-import javax.jws.WebParam;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -22,12 +20,12 @@ public class RecetteController {
 
     private final IngredientDao ingreDao;
     private final UserDao userDao;
-    private final recettesDao recetteDao;
+    private final RecettesDao recetteDao;
 
     private User loggedUser;
 
 
-    public RecetteController(UserDao userDao, IngredientDao ingreDao, recettesDao recetteDao) {
+    public RecetteController(UserDao userDao, IngredientDao ingreDao, RecettesDao recetteDao) {
         this.userDao = userDao;
         this.ingreDao = ingreDao;
         this.recetteDao = recetteDao;
@@ -44,22 +42,6 @@ public class RecetteController {
         model.addAttribute("recette", new Recettes());
         return "add_recipe";
     }
-
-
-//    client ajoute plusieurs ingredient dans son frigo (PostMapping)
-//    @PostMapping("/account/addIngredient")
-//    public String addUserIngredient(String nomIngredient,Model model) {
-//        Iterable<Ingredient> listIngredients = ingreDao.findAll();
-//        for (Ingredient i : listIngredients) {
-//            if (i.getNom().equals(nomIngredient)) {
-//                loggedUser.getIngredients().add(i);
-//                userDao.save(loggedUser);
-//                return "";
-//            }
-//        }
-//        System.out.println("ingredient non supporté !");
-//        return "";
-//    }
 
     @PostMapping("/account/addIngredient")
     public ModelAndView addOneUserIngredient(Ingredient ingredient,Model model) {
@@ -127,7 +109,8 @@ public class RecetteController {
         recetteDao.save(recette);
     }
 
-
+    //delete ingredient from db, Its not the best way to It, and I know It's not good practice to use get
+    //but it works, with the ajax call of the method
     @GetMapping("/account/{id}")
     public String showUserHome(Model model, @PathVariable("id") int id) {
         loggedUser = userDao.findUserById(id);
