@@ -1,6 +1,7 @@
 package com.recettes.portalrecettes.models;
 
 import javax.persistence.*;
+import java.util.ArrayList;
 import java.util.List;
 
 @Entity(name="utilisateur")
@@ -25,7 +26,13 @@ public class User {
     }
 
     public void setIngredients(List<Ingredient> ingredients) {
-        this.ingredients = ingredients;
+        if(this.ingredients==null){
+            this.ingredients= new ArrayList<>();
+        }
+        for (Ingredient i : ingredients) {
+            this.ingredients.add(i);
+        }
+
     }
 
     public String getName() {
