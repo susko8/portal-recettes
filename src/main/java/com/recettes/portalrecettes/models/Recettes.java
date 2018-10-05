@@ -1,6 +1,7 @@
 package com.recettes.portalrecettes.models;
 
 import javax.persistence.*;
+import java.util.ArrayList;
 import java.util.List;
 
 @Entity(name="recettes")
@@ -31,7 +32,13 @@ public class Recettes {
     }
 
     public void setIngredient(List<com.recettes.portalrecettes.models.Ingredient> ingredient) {
-        Ingredient = ingredient;
+        if(this.Ingredient==null){
+            this.Ingredient= new ArrayList<>();
+        }
+        for (Ingredient i : ingredient) {
+            this.Ingredient.add(i);
+        }
+
     }
 
     public Recettes(String titre, String description, String lien_img) {

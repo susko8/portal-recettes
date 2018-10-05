@@ -5,5 +5,5 @@ import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;
 
 @Repository
-public interface recettesDao extends CrudRepository<Recettes, Integer>{
+public interface RecettesDao extends CrudRepository<Recettes, Integer>{
 }
