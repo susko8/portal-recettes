@@ -77,15 +77,16 @@
                         <tr>
                             <th>Image</th>
                             <th>Nom</th>
-                            <th class="text-right">Supprimer</th>
+                            <th>Supprimer</th>
                         </tr>
                         </thead>
 
                         <tbody>
                         <tr th:each="ingredient : ${ingredients}">
-                            <td th:text="${ingredient.lien_img}"></td>
+                            <td><img class="img-responsive" width="66" height="54" th:src="${ingredient.lien_img}"
+                                                           alt="Image"></td>
                             <td th:text="${ingredient.nom}"></td>
-                            <td class="text-right">
+                            <td align="right">
                                 <a style="cursor: pointer" th:onclick="'deleteIngredient(\'' + ${ingredient.id} + '\');'"><i class="fa fa-trash"></i> Supprimer</a>
                             </td>
                         </tr>
@@ -114,15 +115,16 @@
                         <tr>
                             <th>Image</th>
                             <th>Nom</th>
-                            <th class="text-right">Description</th>
+                            <th>Description</th>
                         </tr>
                         </thead>
 
                         <tbody>
                         <tr th:each=" recettes : ${possibles}">
-                            <td th:text="${recettes.lien_img}"></td>
+                            <td><img class="img-responsive" width="66" height="54" th:src="${recettes.lien_img}"
+                                                           alt="Image"></td>
                             <td th:text="${recettes.titre}"></td>
-                            <td class="text-right" th:text="${recettes.description}"></td>
+                            <td th:text="${recettes.description}"></td>
                         </tr>
 
                         </tbody>

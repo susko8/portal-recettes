@@ -112,13 +112,11 @@
         <h3>Parcours notre liste de super recettes! : </h3><br>
     </div><br>
 
-    <!-- /.row -->
+
     <div class="row">
         <div class="col-sm-6 col-sm-offset-3">
-            <!-- /.panel -->
             <div class="panel panel-default">
                 <div class="panel-heading"></div>
-                <!-- /.panel-heading -->
                 <div class="panel-body">
                     <div class="row">
                         <div class="col-sm-12">
@@ -129,15 +127,16 @@
                                     <tr>
                                         <th>Image</th>
                                         <th>Nom</th>
-                                        <th class="text-right">Description</th>
+                                        <th>Description</th>
                                     </tr>
                                     </thead>
 
                                     <tbody>
                                     <tr th:each="recettes : ${data}">
-                                        <td th:text="${recettes.lien_img}"></td>
+                                        <td><img class="img-responsive" width="66" height="54" th:src="${recettes.lien_img}"
+                                             alt="Image"></td>
                                         <td th:text="${recettes.titre}"></td>
-                                        <td  class="text-right" th:text="${recettes.description}"></td>
+                                        <td th:text="${recettes.description}"></td>
                                     </tr>
 
                                     </tbody>
@@ -151,22 +150,14 @@
                                     </ul>
                                 </div>
                             </div>
-                            <!-- /.table-responsive -->
                         </div>
                     </div>
-                    <!-- /.row -->
                 </div>
-                <!-- /.panel-body -->
             </div>
-            <!-- /.panel -->
         </div>
-        <!-- /.col-sm-8 -->
-
     </div>
-    <!-- /.row -->
-
 </div>
-<!-- /#wrapper -->
+
 
 
 
