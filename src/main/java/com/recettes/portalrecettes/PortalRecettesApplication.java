@@ -106,12 +106,10 @@ public class PortalRecettesApplication {
                 "Ajouter la crème.\n" +
                 "Une fois les pâtes cuite, incorporer la crème. Saupoudrer de parmesan. ", "https://static.750g.com/images/622-auto/f6ad72f2ac5f330143bd9bc27566dee6/comment-realiser-des-pates-carbonara-comme-en-italie.jpg");
 
+        //Zone d'ajout du contenu
+
         addDataset(r1,listOmletFrmg, new User[]{us1, us4});
         addDataset(r2,listCarbo, new User[]{us3, us2});
-
-
-
-
 
     }
 }
