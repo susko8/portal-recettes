@@ -157,6 +157,7 @@ public class PortalRecettesApplication {
         addDataset(r4,listQQuart, new User[]{us3, us2});
         addDataset(r5, listCCreme,new User[]{us3, us2});
         addDataset(r6, listToast, new User[]{us3, us2});
+        addDataset(r7,listToast, new User[]{us3, us2});
 
 
     }
