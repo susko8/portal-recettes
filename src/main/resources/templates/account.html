@@ -13,17 +13,14 @@
     <!-- Bootstrap CSS -->
     <link href="../css/bootstrap.min.css" rel="stylesheet">
 
-    <!-- Custom CSS -->
-    <link href="../css/style.css" rel="stylesheet">
-
     <!-- Custom Fonts -->
     <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet"
           type="text/css">
 
     <style>
         .navbar {
-          margin-bottom: 0;
-          border-radius: 0;
+            margin-bottom: 0;
+            border-radius: 0;
         }
 
     </style>
@@ -39,9 +36,6 @@
             <div class="navbar-header">
                 <a class="navbar-brand" href="#">Mon frigo, mes recettes !</a>
             </div>
-            <ul class="nav navbar-nav">
-                <li><a href="/home">Accueil</a></li>
-            </ul>
             <ul class="nav navbar-nav navbar-right">
                 <li><a href="/home"><span class="fa fa-sign-out"></span>&nbspDéconnexion</a></li>
             </ul>
@@ -58,8 +52,13 @@
 
     <div class="row">
         <div class="col-sm-offset-3 col-sm-6">
-            <a href="/user/add_recipe"><button type="button" class="btn btn-primary btn-block"><i class="fa fa-plus"></i> Ajouter une nouvelle recette</button></a>
-        </div><br/><br/><br/><br/>
+            <a href="/user/add_recipe">
+                <button type="button" class="btn btn-primary btn-block"><i class="fa fa-plus"></i> Ajouter une nouvelle
+                    recette
+                </button>
+            </a>
+        </div>
+        <br/><br/><br/><br/>
     </div>
 
     <div class="container text-center">
@@ -83,25 +82,19 @@
 
                         <tbody>
                         <tr th:each="ingredient : ${ingredients}">
-                            <td><img class="img-responsive" width="66" height="54" th:src="${ingredient.lien_img}"
-                                                           alt="Image"></td>
+                            <td><img class="img-responsive" style="height: 45px; width: 66px;"
+                                     th:src="${ingredient.lien_img}"
+                                     alt="Image"></td>
                             <td th:text="${ingredient.nom}"></td>
                             <td align="right">
-                                <a style="cursor: pointer" th:onclick="'deleteIngredient(\'' + ${ingredient.id} + '\');'"><i class="fa fa-trash"></i> Supprimer</a>
+                                <a style="cursor: pointer"
+                                   th:onclick="'deleteIngredient(\'' + ${ingredient.id} + '\');'"><i
+                                        class="fa fa-trash"></i> Supprimer</a>
                             </td>
                         </tr>
 
                         </tbody>
                     </table>
-
-
-                    <div class="text-center">
-                        <ul class="pagination">
-                            <li><a href="#">1</a></li>
-                            <li><a href="#">2</a></li>
-                            <li><a href="#">3</a></li>
-                        </ul>
-                    </div>
                 </div>
             </div>
             <div class="col-sm-6">
@@ -121,29 +114,23 @@
 
                         <tbody>
                         <tr th:each=" recettes : ${possibles}">
-                            <td><img class="img-responsive" width="66" height="54" th:src="${recettes.lien_img}"
-                                                           alt="Image"></td>
+                            <td><img class="img-responsive" style="width: 66px; height: 30px;"
+                                     th:src="${recettes.lien_img}"
+                                     alt="Image"></td>
                             <td th:text="${recettes.titre}"></td>
                             <td th:text="${recettes.description}"></td>
                         </tr>
 
                         </tbody>
                     </table>
-                    <div class="text-center">
-                        <ul class="pagination">
-                            <li><a href="#">1</a></li>
-                            <li><a href="#">2</a></li>
-                            <li><a href="#">3</a></li>
-                        </ul>
-                    </div>
                 </div>
             </div>
         </div>
-    </div><br>
+    </div>
+    <br>
 
 
 </div>
-
 
 
 <footer class="footer">
@@ -157,12 +144,12 @@
 <script>
     function deleteIngredient(id) {
         var xhttp = new XMLHttpRequest();
-        xhttp.onreadystatechange = function() {
+        xhttp.onreadystatechange = function () {
             if (this.readyState == 4 && this.status == 200) {
                 location.reload();
             }
         };
-        xhttp.open("GET", "/deleteIngredient/"+id, true);
+        xhttp.open("GET", "/deleteIngredient/" + id, true);
         xhttp.send();
     }
 </script>
@@ -172,8 +159,6 @@
 
 <!-- Bootstrap Core JavaScript -->
 <script src="../js/bootstrap.min.js"></script>
-
-
 
 
 </body>

@@ -13,9 +13,6 @@
     <!-- Bootstrap CSS -->
     <link href="../css/bootstrap.min.css" rel="stylesheet">
 
-    <!-- Custom CSS -->
-    <link href="../css/style.css" rel="stylesheet">
-
     <!-- Custom Fonts -->
     <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet"
           type="text/css">
@@ -23,26 +20,26 @@
     <style>
 
         .navbar {
-          margin-bottom: 0;
-          border-radius: 0;
+            margin-bottom: 0;
+            border-radius: 0;
         }
 
         .carousel-inner img {
-          width: 100%; /* Set width to 100% */
-          margin: auto;
-          min-height:200px;
+            width: 100%; /* Set width to 100% */
+            margin: auto;
+            min-height: 200px;
         }
 
         .carousel-caption {
-           color: black;
+            color: black;
         }
 
         .carousel-control {
-        /*size */
-        height: 50px;
-        width: 50px;
-        /*vertical position */
-        top: 50%;
+            /*size */
+            height: 50px;
+            width: 50px;
+            /*vertical position */
+            top: 50%;
         }
 
     </style>
@@ -81,8 +78,16 @@
                 <img src="https://www.pacificharvest.co.nz/wp-content/uploads/2016/09/Dsc_0272-1200x400.jpg"
                      alt="Image">
                 <div class="carousel-caption">
-                    <h2>Plats</h2>
-                    <h3>Des recettes qui vont te mettre l'eau à la bouche... ;) </h3>
+                    <h2 style="color: white; text-shadow:
+    -1px -1px 0 #000,
+    1px -1px 0 #000,
+    -1px 1px 0 #000,
+    1px 1px 0 #000;  ">Plats</h2>
+                    <h3 style="color: white; text-shadow:
+    -1px -1px 0 #000,
+    1px -1px 0 #000,
+    -1px 1px 0 #000,
+    1px 1px 0 #000;  ">Des recettes qui vont te mettre l'eau à la bouche... ;) </h3>
                 </div>
             </div>
 
@@ -90,8 +95,16 @@
                 <img src="https://www.lindyscatering.com/wp-content/uploads/2017/09/meeting-catering-andover-1200x400.jpg"
                      alt="Image">
                 <div class="carousel-caption">
-                    <h2>Desserts</h2>
-                    <h3>Découvre toutes nos variétés de desserts !</h3>
+                    <h2 style="color: white; text-shadow:
+    -1px -1px 0 #000,
+    1px -1px 0 #000,
+    -1px 1px 0 #000,
+    1px 1px 0 #000;  ">Desserts</h2>
+                    <h3 style="color: white; text-shadow:
+    -1px -1px 0 #000,
+    1px -1px 0 #000,
+    -1px 1px 0 #000,
+    1px 1px 0 #000;   ">Découvre toutes nos variétés de desserts !</h3>
                 </div>
             </div>
         </div>
@@ -110,7 +123,8 @@
 
     <div class="container text-center">
         <h3>Parcours notre liste de super recettes! : </h3><br>
-    </div><br>
+    </div>
+    <br>
 
 
     <div class="row">
@@ -133,22 +147,15 @@
 
                                     <tbody>
                                     <tr th:each="recettes : ${data}">
-                                        <td><img class="img-responsive" width="66" height="54" th:src="${recettes.lien_img}"
-                                             alt="Image"></td>
+                                        <td><img  style="width: 66px; height: 30px;" class="img-responsive" width="66" height="54"
+                                                 th:src="${recettes.lien_img}"
+                                                 alt="Image"></td>
                                         <td th:text="${recettes.titre}"></td>
                                         <td th:text="${recettes.description}"></td>
                                     </tr>
 
                                     </tbody>
                                 </table>
-
-                                <div class="text-center">
-                                    <ul class="pagination">
-                                        <li><a href="#">1</a></li>
-                                        <li><a href="#">2</a></li>
-                                        <li><a href="#">3</a></li>
-                                    </ul>
-                                </div>
                             </div>
                         </div>
                     </div>
@@ -157,11 +164,6 @@
         </div>
     </div>
 </div>
-
-
-
-
-
 
 
 <footer class="footer">
