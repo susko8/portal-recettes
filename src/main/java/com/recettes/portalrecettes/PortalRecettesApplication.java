@@ -62,22 +62,22 @@ public class PortalRecettesApplication {
     @PostConstruct
     public void init() {
 
-        //Creation of an user account
+        // Creation of an user account
         User us1 = new User("quentin@gmail.com", "miam", "quentin", "unal");
         User us2 = new User("laurine@gmail.com", "1234", "laurine", "torossian");
         User us3 = new User("sophie@gmail.com", "tasty", "sophie", "aitis");
         User us4 = new User("samuel@gmail.com", "12345", "samuel", "susoliak");
 
 
-        //Creation of ingredients list for receipe
+        // Creation of ingredients list for receipe
 
-                //Cheese omelet
+                // Cheese omelet
         List<Ingredient> listOmletFrmg = new ArrayList<>();
 
             listOmletFrmg.add(new Ingredient("oeuf", "https://www.journee-mondiale.com/medias/images/journee/oeuf.png"));
             listOmletFrmg.add(new Ingredient("fromage rapé", "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT_S2NXyBABiaXbdd-FbdeV9LuY0EwtowXdk6gyYS3ikWsV8mda"));
 
-                //Pasta carbonara
+                // Pasta carbonara
         List<Ingredient> listCarbo = new ArrayList<>();
 
             listCarbo.add(new Ingredient("parmesan", "https://www.regal.fr/sites/art-de-vivre/files/styles/large/public/r_parmesan-istock.jpg?itok=Q6TTgV2O"));
@@ -86,14 +86,14 @@ public class PortalRecettesApplication {
             listCarbo.add(new Ingredient("crème fraiche", "https://www.plaisirslaitiers.ca/var/ezflow_site/storage/images/dairy-goodness/home/recipes/creme-fraiche/258517-8-eng-CA/creme-fraiche_large.jpg"));
             listCarbo.add(new Ingredient("échalottes", "https://img-3.journaldesfemmes.com/6zLXXihuCjLfNwwgLCk2Abtn7u0=/910x607/smart/913a2e9520104564b6011257a8fd1181/ccmcms-jdf/10663185.jpg"));
 
-                //Salad of red fruits
+                // Salad of red fruits
         List<Ingredient> listSldFrtRg = new ArrayList<>();
 
             listSldFrtRg.add(new Ingredient("fraises","https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRgE_ZdRddZA-yB02wsybNpNxUI-L-w7VfiDewMhgbZSRUI1m9R"));
             listSldFrtRg.add(new Ingredient("framboises","https://img-3.journaldesfemmes.com/lZqm2rIC2PMKPP1zVrNP7uFsyoo=/910x607/smart/91eed6d1ec5c4912849bc192c62161ab/ccmcms-jdf/10662426.jpg"));
             listSldFrtRg.add(new Ingredient("sucre","https://www.rts.ch/2014/07/10/13/03/5196226.image?w=800&h=449"));
 
-                //Cake
+                // Cake
 
         List<Ingredient> listQQuart = new ArrayList<>();
 
@@ -126,7 +126,7 @@ public class PortalRecettesApplication {
         listPuree.add(new Ingredient("carotte", "https://img-3.journaldesfemmes.com/4PYoBAo1J5rsDbuMiSTNRGolvhc=/910x607/smart/3b81125b1cbd46f7af87766bb8430152/ccmcms-jdf/10659145.jpg"));
         listPuree.add(new Ingredient("creme fraiche","https://www.plaisirslaitiers.ca/var/ezflow_site/storage/images/dairy-goodness/home/recipes/creme-fraiche/258517-8-eng-CA/creme-fraiche_large.jpg"));
 
-        //Receipe creation
+        // Receipe creation
 
         Recettes r1 = new Recettes("Omellette au fromage", "Battre les oeufs.\n" +
                 "Faire cuire les oeuf battus dans une poêle.\n" +
