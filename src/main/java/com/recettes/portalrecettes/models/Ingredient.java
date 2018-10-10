@@ -1,6 +1,9 @@
 package com.recettes.portalrecettes.models;
 import javax.persistence.*;
 
+//Object corresponding to an ingredient
+//can be present in a recipe or be stored by a user
+
 @Entity(name="ingredients")
 public class Ingredient {
 

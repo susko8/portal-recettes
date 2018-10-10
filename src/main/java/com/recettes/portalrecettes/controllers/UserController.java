@@ -3,7 +3,7 @@ package com.recettes.portalrecettes.controllers;
 import com.recettes.portalrecettes.models.User;
 import com.recettes.portalrecettes.persistence.UserDao;
 import com.recettes.portalrecettes.persistence.IngredientDao;
-import com.recettes.portalrecettes.persistence.RecettesDao;
+import com.recettes.portalrecettes.persistence.RecipeDao;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -16,10 +16,10 @@ public class UserController {
     private final IngredientDao ingreDao;
     private final RecetteController recetteController;
     private final UserDao userDao;
-    private final RecettesDao recetteDao;
+    private final RecipeDao recetteDao;
 
 
-    public UserController(UserDao userDao, IngredientDao ingreDao, RecettesDao recetteDao, RecetteController recetteController) {
+    public UserController(UserDao userDao, IngredientDao ingreDao, RecipeDao recetteDao, RecetteController recetteController) {
         this.userDao = userDao;
         this.ingreDao = ingreDao;
         this.recetteDao = recetteDao;

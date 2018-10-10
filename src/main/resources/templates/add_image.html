@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+
+    <title>Mon frigo, mes recettes !</title>
+
+    <!-- Bootstrap CSS -->
+    <link href="../css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Custom Fonts -->
+    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet"
+          type="text/css">
+
+    <style>
+        .navbar {
+          margin-bottom: 0;
+          border-radius: 0;
+        }
+
+    </style>
+
+</head>
+<body>
+
+<div id="wrapper">
+
+    <nav class="navbar navbar-inverse navbar-fixed-top">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <a class="navbar-brand" href="#">Mon frigo, mes recettes !</a>
+            </div>
+            <ul class="nav navbar-nav">
+                <li><a href="/home">Accueil</a></li>
+            </ul>
+            <ul class="nav navbar-nav navbar-right">
+                <li><a href="/home"><span class="fa fa-sign-out"></span>&nbspDéconnexion</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <div class="jumbotron">
+        <div class="container text-center">
+            <img src="https://atoutdelice.com/wp-content/uploads/2018/01/mozzarella-1575066_1920-1200x400.jpg"
+                 alt="Image">
+        </div>
+    </div>
+
+    <div class="container">
+        <form class="form-horizontal" th:action="@{/account/addImage}" th:object="${image}" method="post" enctype="multipart/form-data">
+            <div class="form-group">
+                <h2>Nous n'avons pas d'image pour votre recette/ingrédient! Veuillez en ajouter une</h2>
+
+                <div class="col-sm-10">
+                    <input type="file" >
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="col-sm-offset-2 col-sm-10">
+                    <button type="submit" class="btn btn-default">Ajouter</button>
+                </div>
+            </div>
+        </form>
+    </div>
+
+
+</div>
+
+
+
+<footer class="footer">
+    <div class="container">
+        <div class="row text-center">
+            &bullet; MIN 2018 - Tous droits réservés &bullet;
+        </div>
+    </div>
+</footer>
+
+<!-- jQuery -->
+<script src="../js/jquery-3.1.1.min.js"></script>
+
+<!-- Bootstrap Core JavaScript -->
+<script src="../js/bootstrap.min.js"></script>
+
+
+
+
+</body>
+</html>

@@ -4,6 +4,8 @@ import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.List;
 
+//Object corresponding to an user of the website
+// can store objects Ingredient
 @Entity(name="utilisateur")
 public class User {
 
@@ -25,6 +27,17 @@ public class User {
         return ingredients;
     }
 
+   public Ingredient getLastIngredient()
+    {
+        Ingredient LastIngredient= new Ingredient();
+        LastIngredient.setId(0);
+        for (Ingredient i :this.getIngredients()){
+            if(LastIngredient.getId()<i.getId()) {
+                LastIngredient=i;
+            }
+        }
+        return LastIngredient;
+    }
     public void setIngredients(List<Ingredient> ingredients) {
         if(this.ingredients==null){
             this.ingredients= new ArrayList<>();

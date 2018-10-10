@@ -1,9 +1,9 @@
 package com.recettes.portalrecettes.persistence;
 
-import com.recettes.portalrecettes.models.Recettes;
+import com.recettes.portalrecettes.models.Recipes;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;
 
 @Repository
-public interface RecettesDao extends CrudRepository<Recettes, Integer>{
+public interface RecipeDao extends CrudRepository<Recipes, Integer>{
 }

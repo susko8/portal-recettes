@@ -6,28 +6,34 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
+import javax.imageio.ImageIO;
 
 import javax.annotation.PostConstruct;
+import java.awt.*;
+import java.awt.image.ImageObserver;
+import java.awt.image.ImageProducer;
+import java.io.File;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
 @SpringBootApplication
 @EnableJpaRepositories
-public class PortalRecettesApplication {
+public class PortalRecipesApplication {
 
     @Autowired
     private UserDao userDao;
     @Autowired
     private IngredientDao ingredientDao;
     @Autowired
-    private RecettesDao recetteDao;
+    private RecipeDao recetteDao;
 
 
     public static void main(String[] args) {
-        SpringApplication.run(PortalRecettesApplication.class, args);
+        SpringApplication.run(PortalRecipesApplication.class, args);
     }
 
-    public void addIngredientToUser(User user, String nomIngredient) {
+   /* public void addIngredientToUser(User user, String nomIngredient) {
         Iterable<Ingredient> listIngredients = ingredientDao.findAll();
         for (Ingredient i : listIngredients) {
             if (i.getNom().equals(nomIngredient)) {
@@ -45,9 +51,12 @@ public class PortalRecettesApplication {
             addIngredientToUser(user, i.getNom());
         }
 
-    }
+    }*/
 
-    public void addDataset(Recettes recette, List<Ingredient> ingredients, User[] users) {
+    // Function used to save contents in the DB
+    // Save a Recipe and it's list of ingredient
+    // Eventually add this list to user's ingredients passed as argument
+    public void addDataset(Recipes recette, List<Ingredient> ingredients, User[] users) {
 
         ingredientDao.saveAll(ingredients);
         recette.setIngredient(ingredients);
@@ -131,26 +140,26 @@ public class PortalRecettesApplication {
 
         // Receipe creation
 
-        Recettes r1 = new Recettes("Omellette au fromage", "Battre les oeufs.\n" +
+        Recipes r1 = new Recipes("Omellette au fromage", "Battre les oeufs.\n" +
                 "Faire cuire les oeuf battus dans une poêle.\n" +
                 "Ajouter le fromage rapé.\n" +
                 "Retirer du feu.\n", "https://cac.img.pmdstatic.net/fit/http.3A.2F.2Fprd2-bone-image.2Es3-website-eu-west-1.2Eamazonaws.2Ecom.2Fcac.2F2018.2F09.2F25.2F6d1aef0b-b0ad-4c4c-b670-63f975b72c88.2Ejpeg/748x372/quality/80/crop-from/center/omelette-au-fromage.jpeg");
 
 
-        Recettes r2 = new Recettes("Pates carbonara", "Cuire les pâtes.\n" +
+        Recipes r2 = new Recipes("Pates carbonara", "Cuire les pâtes.\n" +
                 "Emincer les échalottes et les faire revenir à la poêle avec les lardons.\n" +
                 "Ajouter la crème.\n" +
                 "Une fois les pâtes cuites, incorporer la crème. Saupoudrer de parmesan. ", "https://static.750g.com/images/622-auto/f6ad72f2ac5f330143bd9bc27566dee6/comment-realiser-des-pates-carbonara-comme-en-italie.jpg");
 
-        Recettes r3 = new Recettes("Salade de fruits rouges", "Mélangez les fraises et les framboises avec le sucre. Laissez reposer 3h au frigo.. \n", "https://cache.magicmaman.com/data/photo/w600_c18/4a/salade-de-fruits-rouges.jpg");
+        Recipes r3 = new Recipes("Salade de fruits rouges", "Mélangez les fraises et les framboises avec le sucre. Laissez reposer 3h au frigo.. \n", "https://cache.magicmaman.com/data/photo/w600_c18/4a/salade-de-fruits-rouges.jpg");
 
-        Recettes r4 = new Recettes("Quatre quarts", "Mélangez 140g de sucre, 140g de farine, 140g de beurre et 3 oeufs. Faites cuire 10 min à 180 degrés", "https://static.cuisineaz.com/610x610/i2632-quatre-quart-facile.jpeg");
+        Recipes r4 = new Recipes("Quatre quarts", "Mélangez 140g de sucre, 140g de farine, 140g de beurre et 3 oeufs. Faites cuire 10 min à 180 degrés", "https://static.cuisineaz.com/610x610/i2632-quatre-quart-facile.jpeg");
 
-        Recettes r5 = new Recettes("Concombres à la crème", "Epluchez les concombres et coupez les en rondelles. Préparez la sauce en mélangeant la crème et le vinaigre. Ajoutez la sauce aux concombres et laissez au frigo pendant 3h", "https://www.academiedugout.fr/images/14097/948-580/fotolia_60657745_subscription_xxl.jpg?poix=50&poiy=50");
+        Recipes r5 = new Recipes("Concombres à la crème", "Epluchez les concombres et coupez les en rondelles. Préparez la sauce en mélangeant la crème et le vinaigre. Ajoutez la sauce aux concombres et laissez au frigo pendant 3h", "https://www.academiedugout.fr/images/14097/948-580/fotolia_60657745_subscription_xxl.jpg?poix=50&poiy=50");
 
-        Recettes r6 = new Recettes("Toast Thon/avocat", "D'une part, emiettez le thon, et mélangez le avec de la mayonnaise. D'autre part, écrasez la chair d'avocat. Mélanger les deux puis tartinez le pain avec", "https://image.afcdn.com/recipe/20160725/31500_w420h344c1cx2100cy1226.jpg");
+        Recipes r6 = new Recipes("Toast Thon/avocat", "D'une part, emiettez le thon, et mélangez le avec de la mayonnaise. D'autre part, écrasez la chair d'avocat. Mélanger les deux puis tartinez le pain avec", "https://image.afcdn.com/recipe/20160725/31500_w420h344c1cx2100cy1226.jpg");
 
-        Recettes r7 = new Recettes("Purée de carottes", "D'une part, épluchez et faites cuire les carottes et les pommes de terre. Ecrasez le tout à la fourchette. Ajoutez la crème fraiche dans le mélange.", "https://www.cookomix.com/wp-content/uploads/2017/09/puree-carotte-patate-douce-thermomix-800x600.jpg");
+        Recipes r7 = new Recipes("Purée de carottes", "D'une part, épluchez et faites cuire les carottes et les pommes de terre. Ecrasez le tout à la fourchette. Ajoutez la crème fraiche dans le mélange.", "https://www.cookomix.com/wp-content/uploads/2017/09/puree-carotte-patate-douce-thermomix-800x600.jpg");
 
         //Add of dataset
 
@@ -166,5 +175,11 @@ public class PortalRecettesApplication {
         addDataset(r7,listOmletFrmg,new User[]{us5});
 
 
+        try {
+            Images im =new Images();
+            (new File(".\\src\\main\\resources\\static\\img\\hello.png")).createNewFile();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 }

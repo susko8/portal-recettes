@@ -4,8 +4,10 @@ import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.List;
 
+// Object corresponding to a recipe
+// store a list of objects Ingredient necessary to make it
 @Entity(name="recettes")
-public class Recettes {
+public class Recipes {
 
     @Id
     @GeneratedValue(strategy= GenerationType.AUTO)
@@ -17,10 +19,10 @@ public class Recettes {
     @ManyToMany(fetch = FetchType.EAGER)
     List<Ingredient> Ingredient;
 
-    public Recettes() {
+    public Recipes() {
     }
 
-    public Recettes(String titre, String description, String lien_img, List<com.recettes.portalrecettes.models.Ingredient> ingredient) {
+    public Recipes(String titre, String description, String lien_img, List<com.recettes.portalrecettes.models.Ingredient> ingredient) {
         this.titre = titre;
         this.description = description;
         this.lien_img = lien_img;
@@ -41,7 +43,7 @@ public class Recettes {
 
     }
 
-    public Recettes(String titre, String description, String lien_img) {
+    public Recipes(String titre, String description, String lien_img) {
         this.titre = titre;
         this.description = description;
         this.lien_img = lien_img;
@@ -82,7 +84,7 @@ public class Recettes {
 
     @Override
     public String toString() {
-        return "Recettes{" +
+        return "Recipes{" +
                 "id=" + id +
                 ", titre='" + titre + '\'' +
                 ", description='" + description + '\'' +
