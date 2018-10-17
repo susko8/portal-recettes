@@ -83,9 +83,9 @@
                         <tbody>
                         <tr th:each="ingredient : ${ingredients}">
                             <td><img class="img-responsive" style="height: 45px; width: 66px;"
-                                     th:src="${ingredient.lien_img}"
+                                     th:src="${ingredient.link_img}"
                                      alt="Image"></td>
-                            <td th:text="${ingredient.nom}"></td>
+                            <td th:text="${ingredient.name}"></td>
                             <td align="right">
                                 <a style="cursor: pointer"
                                    th:onclick="'deleteIngredient(\'' + ${ingredient.id} + '\');'"><i
@@ -115,9 +115,9 @@
                         <tbody>
                         <tr th:each=" recettes : ${possibles}">
                             <td><img class="img-responsive" style="width: 66px; height: 30px;"
-                                     th:src="${recettes.lien_img}"
+                                     th:src="${recettes.link_img}"
                                      alt="Image"></td>
-                            <td th:text="${recettes.titre}"></td>
+                            <td th:text="${recettes.title}"></td>
                             <td th:text="${recettes.description}"></td>
                         </tr>
 

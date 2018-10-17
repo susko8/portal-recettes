@@ -12,20 +12,23 @@ public class Recipes {
     @Id
     @GeneratedValue(strategy= GenerationType.AUTO)
     private int id;
-    private String titre;
+    @Column(name="titre")
+    private String title;
     private String description;
-    private String lien_img;
+    @Column(name="lien_img")
+    private String link_img;
 
+    //the list of Ingredients needed to make the recipe
     @ManyToMany(fetch = FetchType.EAGER)
     List<Ingredient> Ingredient;
 
     public Recipes() {
     }
 
-    public Recipes(String titre, String description, String lien_img, List<com.recettes.portalrecettes.models.Ingredient> ingredient) {
-        this.titre = titre;
+    public Recipes(String title, String description, String link_img, List<com.recettes.portalrecettes.models.Ingredient> ingredient) {
+        this.title = title;
         this.description = description;
-        this.lien_img = lien_img;
+        this.link_img = link_img;
         Ingredient = ingredient;
     }
 
@@ -33,6 +36,7 @@ public class Recipes {
         return Ingredient;
     }
 
+    //add the ingredient in argument to the recipe's list of ingredients
     public void setIngredient(List<com.recettes.portalrecettes.models.Ingredient> ingredient) {
         if(this.Ingredient==null){
             this.Ingredient= new ArrayList<>();
@@ -43,10 +47,10 @@ public class Recipes {
 
     }
 
-    public Recipes(String titre, String description, String lien_img) {
-        this.titre = titre;
+    public Recipes(String title, String description, String link_img) {
+        this.title = title;
         this.description = description;
-        this.lien_img = lien_img;
+        this.link_img = link_img;
     }
 
 
@@ -58,12 +62,12 @@ public class Recipes {
         this.id = id;
     }
 
-    public String getTitre() {
-        return titre;
+    public String getTitle() {
+        return title;
     }
 
-    public void setTitre(String titre) {
-        this.titre = titre;
+    public void setTitle(String title) {
+        this.title = title;
     }
 
     public String getDescription() {
@@ -74,21 +78,21 @@ public class Recipes {
         this.description = description;
     }
 
-    public String getLien_img() {
-        return lien_img;
+    public String getLink_img() {
+        return link_img;
     }
 
-    public void setLien_img(String lien_img) {
-        this.lien_img = lien_img;
+    public void setLink_img(String link_img) {
+        this.link_img = link_img;
     }
 
     @Override
     public String toString() {
         return "Recipes{" +
                 "id=" + id +
-                ", titre='" + titre + '\'' +
+                ", title='" + title + '\'' +
                 ", description='" + description + '\'' +
-                ", lien_img='" + lien_img + '\'' +
+                ", link_img='" + link_img + '\'' +
                 ", Ingredient=" + Ingredient +
                 '}';
     }

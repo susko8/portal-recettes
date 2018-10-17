@@ -1,6 +1,5 @@
 package com.recettes.portalrecettes.controllers;
 
-import com.recettes.portalrecettes.models.Images;
 import com.recettes.portalrecettes.models.Ingredient;
 import com.recettes.portalrecettes.models.Recipes;
 import com.recettes.portalrecettes.models.User;
@@ -14,11 +13,10 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.servlet.ModelAndView;
 
-import java.awt.*;
-import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
 
+//Controller used to manipulate the contents
 @Controller
 public class RecetteController {
 
@@ -51,21 +49,30 @@ public class RecetteController {
         return "add_recipe";
     }
 
-    //When an user ask to add a recipe
-    //pick-up this one in the page's areas
+/*  attempt to handle images upload, not working yet
+
+
     @GetMapping("/user/add_image")
     public String showAddImage(Model model) {
-        model.addAttribute("image", new Images());
+
+        model.addAttribute("image");
 
         return "add_image";
     }
 
-    @PostMapping("/account/addImage")
+    @PostMapping(path = "/account/addImage", consumes = {"multipart/form-data"} )
     public ModelAndView  addImage(Image image, Model model){
+        try {
+
         Ingredient Lasting= loggedUser.getLastIngredient();
-        Lasting.setLien_img(".\\src\\main\\resources\\static\\img\\" + Lasting.getLien_img() + ".jpg");
+        Lasting.setLink_img(".\\src\\main\\resources\\static\\img\\" + Lasting.getName() + ".jpg");
+
+            //ImageIO.write(image,"JPG",new File(Lasting.getLink_img()));
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
         return new ModelAndView("redirect:/account/" + loggedUser.getId());
-    }
+    }*/
 
     //Process the different cases possible when a user add an ingredient
     @PostMapping("/account/addIngredient")
@@ -75,14 +82,14 @@ public class RecetteController {
         // it's useless to save it twice
         Iterable<Ingredient> listIngredientsUser = loggedUser.getIngredients();
         for (Ingredient i : listIngredientsUser) {
-            if (i.getNom().equals(ingredient.getNom())) {
+            if (i.getName().equals(ingredient.getName())) {
                 return new ModelAndView("redirect:/account/" + loggedUser.getId());
             }
         }
         ////existing ingredient in app ingredients
         //add it to the user
         for (Ingredient i : listIngredients) {
-            if (i.getNom().equals(ingredient.getNom())) {
+            if (i.getName().equals(ingredient.getName())) {
                 loggedUser.getIngredients().add(i);
                 userDao.save(loggedUser);
                 return new ModelAndView("redirect:/account/" + loggedUser.getId());
@@ -104,17 +111,17 @@ public class RecetteController {
        // File
         Recipes receteToSave =new Recipes();
         receteToSave.setDescription(recette.getDescription());
-        receteToSave.setTitre(recette.getTitre());
+        receteToSave.setTitle(recette.getTitle());
         receteToSave.setIngredient(new ArrayList<>());
-        receteToSave.setLien_img(null);
+        receteToSave.setLink_img(null);
         recetteDao.save(receteToSave);
         List<Ingredient> ingredients = new ArrayList<>();
-        String[] TempIng = recette.getIngredient().get(0).getNom().split(",");
+        String[] TempIng = recette.getIngredient().get(0).getName().split(",");
         for (String t : TempIng) {
             ingredients.add(new Ingredient(t.trim(), ""));
         }
         for (Ingredient i : ingredients) {
-            addIngredientToRecipe(receteToSave, i.getNom());
+            addIngredientToRecipe(receteToSave, i.getName());
         }
         //if ()
         return new ModelAndView("redirect:/account/" + loggedUser.getId());
@@ -134,7 +141,7 @@ public class RecetteController {
         for (Ingredient i : listIngredients) {
             ////existing ingredient in app ingredients
             //add it to the recipe
-            if (i.getNom().equals(nomIngredient)) {
+            if (i.getName().equals(nomIngredient)) {
                 recette.getIngredient().add(i);
                 recetteDao.save(recette);
                 return;
@@ -164,7 +171,7 @@ public class RecetteController {
         List<Recipes> possibles = new ArrayList<>();
         for (Recipes r : recetteDao.findAll()) {
             for (Ingredient i : r.getIngredient()) {
-                if (!user.hasIngredient(i.getNom())) {
+                if (!user.hasIngredient(i.getName())) {
                     flag = false;
                     break;
                 }

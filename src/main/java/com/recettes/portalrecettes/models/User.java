@@ -20,13 +20,17 @@ public class User {
     @Column(name="nom")
     private String surname;
 
+    //the list of Ingredients that the user possess
     @ManyToMany(fetch = FetchType.EAGER)
     List<Ingredient> ingredients;
+
 
     public List<Ingredient> getIngredients() {
         return ingredients;
     }
 
+    //get the last ingredient added to the user
+    //used to add image to new ingredients (not supported yet)
    public Ingredient getLastIngredient()
     {
         Ingredient LastIngredient= new Ingredient();
@@ -38,6 +42,7 @@ public class User {
         }
         return LastIngredient;
     }
+    //add the ingredient in argument to the user's list of ingredients
     public void setIngredients(List<Ingredient> ingredients) {
         if(this.ingredients==null){
             this.ingredients= new ArrayList<>();
@@ -94,12 +99,14 @@ public class User {
     {
         for(int i = 0 ; i<this.ingredients.size();i++)
         {
-            if(name.equals(this.ingredients.get(i).getNom()))
+            if(name.equals(this.ingredients.get(i).getName()))
                 return true;
         }
         return false;
     }
 
+    //retrieve an ingredient of the user's list which has the same id than the int in argument
+    //if not exist, return null
     public Ingredient getUserIngredientById(int id)
     {
         for(int i = 0 ; i<this.ingredients.size();i++)

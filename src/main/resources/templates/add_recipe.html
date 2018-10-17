@@ -56,15 +56,15 @@
         <form class="form-horizontal" th:action="@{/account/addRecipe}" th:object="${recette}" method="post">
             <h2>Ajoutez une recette!</h2>
             <div class="form-group">
-                <label class="control-label col-sm-2" for="text">Entrez le titre de la recette :</label>
+                <label class="control-label col-sm-2" for="text">Entrez le title de la recette :</label>
                 <div class="col-sm-10">
-                    <input type="text" th:field="*{titre}" class="form-control" id="text" placeholder="ex : Tarte aux pommes, pizza, etc. " name="nom">
+                    <input type="text" th:field="*{title}" class="form-control" id="text" placeholder="ex : Tarte aux pommes, pizza, etc. " name="name">
                 </div>
             </div>
             <div class="form-group">
                 <label class="control-label col-sm-2" for="ingredients">Entrez les ingrédients :</label>
                 <div class="col-sm-10">
-                    <textarea class="form-control" th:field="*{ingredient[0].nom}"  rows="5" id="ingredients" placeholder="ex : Beurre,tomates,etc. "></textarea>
+                    <textarea class="form-control" th:field="*{ingredient[0].name}"  rows="5" id="ingredients" placeholder="ex : Beurre,tomates,etc. "></textarea>
                     <i class="fa fa-exclamation-triangle" style="color: red"></i> Attention ! Respectez le format de champ (ingredient1,ingredient2)
                 </div>
             </div>

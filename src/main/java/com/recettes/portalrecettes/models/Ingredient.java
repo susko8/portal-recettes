@@ -11,13 +11,13 @@ public class Ingredient {
     @GeneratedValue(strategy= GenerationType.AUTO)
     private int id;
     @Column(name="nom")
-    private String nom;
+    private String name;
     @Column(name="lien_img")
-    private String lien_img;
+    private String link_img;
 
-    public Ingredient(String nom, String lien_img) {
-        this.nom = nom;
-        this.lien_img = lien_img;
+    public Ingredient(String name, String link_img) {
+        this.name = name;
+        this.link_img = link_img;
     }
 
     public Ingredient (){
@@ -32,28 +32,28 @@ public class Ingredient {
         this.id = id;
     }
 
-    public String getNom() {
-        return nom;
+    public String getName() {
+        return name;
     }
 
-    public void setNom(String nom) {
-        this.nom = nom;
+    public void setName(String name) {
+        this.name = name;
     }
 
-    public String getLien_img() {
-        return lien_img;
+    public String getLink_img() {
+        return link_img;
     }
 
-    public void setLien_img(String lien_img) {
-        this.lien_img = lien_img;
+    public void setLink_img(String link_img) {
+        this.link_img = link_img;
     }
 
     @Override
     public String toString() {
         return "ingredients{" +
                 "id=" + id +
-                ", nom='" + nom + '\'' +
-                ", lien_img='" + lien_img + '\'' +
+                ", name='" + name + '\'' +
+                ", link_img='" + link_img + '\'' +
                 '}';
     }
 }

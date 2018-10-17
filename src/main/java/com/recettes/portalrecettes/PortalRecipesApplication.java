@@ -36,7 +36,7 @@ public class PortalRecipesApplication {
    /* public void addIngredientToUser(User user, String nomIngredient) {
         Iterable<Ingredient> listIngredients = ingredientDao.findAll();
         for (Ingredient i : listIngredients) {
-            if (i.getNom().equals(nomIngredient)) {
+            if (i.getName().equals(nomIngredient)) {
                 user.getIngredients().add(i);
                 userDao.save(user);
                 return;
@@ -48,7 +48,7 @@ public class PortalRecipesApplication {
 
     public void addListIngredientToUser(User user, List<Ingredient> ingredients) {
         for (Ingredient i : ingredients) {
-            addIngredientToUser(user, i.getNom());
+            addIngredientToUser(user, i.getName());
         }
 
     }*/
@@ -175,11 +175,6 @@ public class PortalRecipesApplication {
         addDataset(r7,listOmletFrmg,new User[]{us5});
 
 
-        try {
-            Images im =new Images();
-            (new File(".\\src\\main\\resources\\static\\img\\hello.png")).createNewFile();
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
+
     }
 }
